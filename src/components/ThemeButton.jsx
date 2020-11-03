@@ -13,7 +13,7 @@ const ThemeButton = () => {
       aria-label={label}
       variant='outline'
       border='none'
-      icon={<Icon boxSize={6} as={icon} />}
+      icon={<Icon boxSize={{ base: 8, sm: 6 }} as={icon} />}
     />
   )
 }

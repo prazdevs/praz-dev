@@ -3,7 +3,7 @@ title: Posting Reddit submissions to Discord & Twitter automatically
 category: blog
 date: 2020-03-15
 thumbnail: ../images/discord-routines.png
-tags: [TypeScript, NodeJs]
+tags: [typescript, node]
 ---
 
 Now that our Discord bot can [execute commands](https://praz.dev/abstract-commands-discord), how about we add more features into it?

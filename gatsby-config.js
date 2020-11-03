@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
+        name: `content`,
         path: `${__dirname}/content`
       }
     },
@@ -20,6 +20,7 @@ module.exports = {
         extensions: [`.md`, `.mdx`]
       }
     },
+    `gatsby-remark-reading-time`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

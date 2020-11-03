@@ -3,7 +3,7 @@ title: Authentication for REST APIs with NestJs and JWT
 category: blog
 date: 2020-04-19
 thumbnail: ../images/nest-auth-api.png
-tags: [NestJs, TypeScript, MongoDB]
+tags: [nest, typescript, mongodb]
 ---
 
 The JavaScript environment may be amazing for frontend work, there are also plenty of solutions for the backend. Express being a really good base, it can quickly become overwhelming to add features to it, while keeping things organized, also I find the TypeScript integration to be lacklustre sometimes. This is where NestJs comes into play. Nest is _"a progressive Node.js framework for building efficient, reliable and scalable server-side applications"_. It runs on Express under the hood but provides great TypeScript integration and native Dependency Injection. NestJs is very opinionated and inspired by Angular.

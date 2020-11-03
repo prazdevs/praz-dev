@@ -31,7 +31,7 @@ const NavLink = ({ label, link }) => {
     <Link
       as={GatsbyLink}
       to={link}
-      fontSize='xl'
+      fontSize={{ base: '2xl', sm: 'xl' }}
       _hover={{
         color: primary,
         textDecor: 'none'
