@@ -1,5 +1,9 @@
+import { Container } from '@chakra-ui/core'
+import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+
+import ColorModeFix from './ColorModeFix'
+import Footer from './Footer'
 import Header from './Header'
 
 const Layout = ({ children }) => {
@@ -15,13 +19,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <ColorModeFix />
       <Header />
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      <Container
+        as='main'
+        fontFamily='Montserrat'
+        maxW='62em'
+        mt={{ base: '3.5rem', sm: '4.5rem' }}
+        pt='1rem'
+      >
+        {children}
+      </Container>
+      <Footer />
     </>
   )
 }
