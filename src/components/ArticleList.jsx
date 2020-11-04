@@ -9,7 +9,8 @@ import {
   Icon,
   Flex,
   WrapItem,
-  Stack
+  Stack,
+  Image
 } from '@chakra-ui/core'
 import useColors from '../hooks/useColors'
 import { Calendar, Watch } from 'emotion-icons/feather'
@@ -17,7 +18,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import TechTag from './TechTag'
 import thumbnail from './article.jpg'
 
-const ArticleList = ({ articles }) => {
+const ArticleList = ({ articles, isCondensed }) => {
   const { primary } = useColors()
 
   return (
@@ -33,23 +34,30 @@ const ArticleList = ({ articles }) => {
             _hover={{ color: primary }}
             transition='all 0.15s ease-out'
           >
-            <Avatar
-              size='md'
+            <Image
+              boxSize={isCondensed ? '3rem' : '5rem'}
               src={thumbnail}
               mr={3}
-              // display='none'
+              borderRadius='full'
+              background='gray.400'
               display={{ base: 'none', sm: 'inline-flex' }}
-              _groupHover={{ borderColor: primary, borderWidth: '2px' }}
+              _groupHover={{
+                borderColor: primary,
+                borderWidth: '2px',
+                borderStyle: 'solid'
+              }}
             />
             <Stack direction='column'>
               <Text fontSize='xl'>{article.title}</Text>
-              {/* <Wrap>
-                {article.tags.map(tag => (
-                  <WrapItem key={tag}>
-                    <TechTag tech={tag} />
-                  </WrapItem>
-                ))}
-              </Wrap> */}
+              {isCondensed ? null : (
+                <Wrap>
+                  {article.tags.map(tag => (
+                    <WrapItem key={tag}>
+                      <TechTag tech={tag} />
+                    </WrapItem>
+                  ))}
+                </Wrap>
+              )}
               <HStack>
                 <Icon as={Calendar} boxSize={5} />
                 <Text mr={2}>{article.date}</Text>

@@ -27,9 +27,7 @@ const SectionHeading = ({ heading }) => {
 
 const IndexPage = ({ data }) => {
   const articles = data.articles.nodes.map(node => ({
-    title: node.frontmatter.title,
-    date: node.frontmatter.date,
-    tags: node.frontmatter.tags,
+    ...node.frontmatter,
     link: node.slug,
     readingTime: node.fields.readingTime.text
   }))
@@ -45,7 +43,7 @@ const IndexPage = ({ data }) => {
       <Stack spacing={12}>
         <Flex direction='column'>
           <SectionHeading heading='Latest articles' />
-          <ArticleList articles={articles} />
+          <ArticleList articles={articles} isCondensed />
         </Flex>
         <Flex direction='column'>
           <SectionHeading heading='Projects' />
@@ -72,7 +70,6 @@ export const query = graphql`
         frontmatter {
           date(locale: "en-gb", formatString: "ll")
           title
-          tags
         }
         slug
       }

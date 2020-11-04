@@ -7,7 +7,8 @@ import {
   ListItem,
   Stack,
   StackDivider,
-  Text
+  Text,
+  Image
 } from '@chakra-ui/core'
 
 import useColors from '../hooks/useColors'
@@ -30,12 +31,18 @@ const ProjectList = ({ projects }) => {
             role='group'
             _hover={{ color: primary, textDecor: 'none' }}
           >
-            <Avatar
-              size='md'
+            <Image
+              boxSize='3rem'
               src={thumbnail}
               mr={3}
+              borderRadius='full'
+              background='gray.400'
               display={{ base: 'none', sm: 'inline-flex' }}
-              _groupHover={{ borderColor: primary, borderWidth: '2px' }}
+              _groupHover={{
+                borderColor: primary,
+                borderWidth: '2px',
+                borderStyle: 'solid'
+              }}
             />
             <Stack direction='column'>
               <Stack direction='row' align='center'>
