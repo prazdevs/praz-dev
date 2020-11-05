@@ -4,13 +4,15 @@ import ArticleList from '../components/ArticleList'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
+import { graphql } from 'gatsby'
 
 const ArticlesPage = ({ data }) => {
   const { primary } = useColors()
+  console.log(data.articles)
 
   const articles = data.articles.nodes.map(node => ({
     ...node.frontmatter,
-    link: node.slug,
+    link: node.fields.slug,
     readingTime: node.fields.readingTime.text
   }))
 
@@ -24,6 +26,7 @@ const ArticlesPage = ({ data }) => {
           fontWeight='normal'
           fontSize='4xl'
           mr='auto'
+          mt={7}
           mb={4}
           borderBottomColor={primary}
           borderBottomWidth='2px'
@@ -49,6 +52,7 @@ export const query = graphql`
     ) {
       nodes {
         fields {
+          slug
           readingTime {
             text
           }
@@ -58,7 +62,6 @@ export const query = graphql`
           title
           tags
         }
-        slug
       }
     }
   }

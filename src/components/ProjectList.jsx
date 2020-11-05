@@ -1,25 +1,24 @@
 import {
-  Avatar,
   Badge,
+  Box,
   Flex,
   Link,
   List,
   ListItem,
   Stack,
   StackDivider,
-  Text,
-  Image
+  Text
 } from '@chakra-ui/core'
+import Img from 'gatsby-image'
 
 import useColors from '../hooks/useColors'
-import thumbnail from './article.jpg'
 
 const ProjectList = ({ projects }) => {
   const { primary } = useColors()
 
   return (
     <Stack as={List} direction='column' divider={<StackDivider />}>
-      {projects.map(project => (
+      {projects.map((project, idx) => (
         <ListItem key={project.title}>
           <Flex
             as={Link}
@@ -29,14 +28,17 @@ const ProjectList = ({ projects }) => {
             direction='row'
             align='center'
             role='group'
+            aria-labelledby={`project-${idx}`}
             _hover={{ color: primary, textDecor: 'none' }}
           >
-            <Image
+            <Box
+              as={Img}
               boxSize='3rem'
-              src={thumbnail}
+              width='3rem'
+              height='3rem'
+              fixed={project.thumbnail}
               mr={3}
               borderRadius='full'
-              background='gray.400'
               display={{ base: 'none', sm: 'inline-flex' }}
               _groupHover={{
                 borderColor: primary,
@@ -46,10 +48,12 @@ const ProjectList = ({ projects }) => {
             />
             <Stack direction='column'>
               <Stack direction='row' align='center'>
-                <Text fontSize='xl'>{project.title}</Text>
-                <Badge colorScheme={project.maintained ? 'green' : 'red'}>
-                  {project.maintained ? 'maintained' : 'abandoned'}
-                </Badge>
+                <Text fontSize='xl' id={`project-${idx}`}>
+                  {project.title}
+                </Text>
+                {project.maintained ? (
+                  <Badge colorScheme='green'>maintained</Badge>
+                ) : null}
               </Stack>
               <Text>{project.description}</Text>
             </Stack>

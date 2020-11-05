@@ -2,7 +2,6 @@
 title: Making a Discord bot with TypeScript and deploying to Heroku
 category: blog
 date: 2020-01-20
-thumbnail: ../images/discord-typescript-heroku.png
 tags: [typescript, node, heroku]
 ---
 

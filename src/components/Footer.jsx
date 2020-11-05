@@ -5,7 +5,7 @@ const Footer = () => {
     <Box
       as='footer'
       w='full'
-      align='center'
+      textAlign='center'
       fontFamily='Montserrat'
       mt={12}
       py={2}

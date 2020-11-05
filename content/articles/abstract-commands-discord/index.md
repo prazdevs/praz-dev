@@ -2,7 +2,6 @@
 title: Command and Factory patterns in a Discord bot with Typescript
 category: blog
 date: 2020-02-24
-thumbnail: ../images/discord-command-factory.png
 tags: [typescript, node]
 ---
 

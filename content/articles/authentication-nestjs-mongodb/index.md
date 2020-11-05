@@ -2,7 +2,6 @@
 title: Authentication for REST APIs with NestJs and JWT
 category: blog
 date: 2020-04-19
-thumbnail: ../images/nest-auth-api.png
 tags: [nest, typescript, mongodb]
 ---
 

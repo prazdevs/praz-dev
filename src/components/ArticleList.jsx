@@ -1,54 +1,59 @@
 import {
-  List,
   HStack,
-  StackDivider,
+  Icon,
+  Image,
+  Link,
+  List,
   ListItem,
-  Avatar,
+  Stack,
+  StackDivider,
   Text,
   Wrap,
-  Icon,
-  Flex,
-  WrapItem,
-  Stack,
-  Image
+  WrapItem
 } from '@chakra-ui/core'
-import useColors from '../hooks/useColors'
 import { Calendar, Watch } from 'emotion-icons/feather'
 import { Link as GatsbyLink } from 'gatsby'
+
+import useColors from '../hooks/useColors'
 import TechTag from './TechTag'
-import thumbnail from './article.jpg'
 
 const ArticleList = ({ articles, isCondensed }) => {
   const { primary } = useColors()
 
   return (
     <Stack as={List} direction='column' divider={<StackDivider />}>
-      {articles.map(article => (
+      {articles.map((article, idx) => (
         <ListItem key={article.title}>
-          <Flex
+          <Link
             as={GatsbyLink}
             to={article.link}
+            display='flex'
             direction='row'
-            align='center'
+            alignItems='center'
             role='group'
+            aria-labelledby={`article-${idx}`}
             _hover={{ color: primary }}
             transition='all 0.15s ease-out'
           >
-            <Image
-              boxSize={isCondensed ? '3rem' : '5rem'}
-              src={thumbnail}
-              mr={3}
-              borderRadius='full'
-              background='gray.400'
-              display={{ base: 'none', sm: 'inline-flex' }}
-              _groupHover={{
-                borderColor: primary,
-                borderWidth: '2px',
-                borderStyle: 'solid'
-              }}
-            />
+            {article.thumbnail ? (
+              <Image
+                boxSize={isCondensed ? '3rem' : '5rem'}
+                src={article.thumbnail}
+                mr={3}
+                borderRadius='full'
+                background='gray.400'
+                display={{ base: 'none', sm: 'inline-flex' }}
+                _groupHover={{
+                  borderColor: primary,
+                  borderWidth: '2px',
+                  borderStyle: 'solid'
+                }}
+              />
+            ) : null}
             <Stack direction='column'>
-              <Text fontSize='xl'>{article.title}</Text>
+              <Text fontSize='xl' id={`article-${idx}`}>
+                {article.title}
+              </Text>
               {isCondensed ? null : (
                 <Wrap>
                   {article.tags.map(tag => (
@@ -65,7 +70,7 @@ const ArticleList = ({ articles, isCondensed }) => {
                 <Text>{article.readingTime}</Text>
               </HStack>
             </Stack>
-          </Flex>
+          </Link>
         </ListItem>
       ))}
     </Stack>

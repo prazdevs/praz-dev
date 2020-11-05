@@ -2,7 +2,6 @@
 title: Handling async authentication flow in React with Redux & Redux-Saga
 category: blog
 date: 2020-06-30
-thumbnail: ../images/react-auth-redux-saga.png
 tags: [react, redux]
 ---
 

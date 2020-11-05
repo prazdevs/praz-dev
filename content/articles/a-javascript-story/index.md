@@ -2,7 +2,6 @@
 title: From hate to love, a Javascript story
 category: blog
 date: 2019-12-21
-thumbnail: ../images/javascript.png
 tags: [storytime, javascript]
 ---
 

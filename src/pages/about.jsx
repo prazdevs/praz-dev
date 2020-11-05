@@ -1,51 +1,73 @@
-import SEO from '../components/Seo'
 import Layout from '../components/Layout'
-import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/core'
-import {
-  ReactLogo,
-  Javascript,
-  Typescript,
-  Redux,
-  Mongodb,
-  Nestjs,
-  Cypress
-} from 'emotion-icons/simple-icons'
-import TechTag from '../components/TechTag'
+import SEO from '../components/Seo'
+import { graphql } from 'gatsby'
+import useColors from '../hooks/useColors'
 
-const about = () => (
-  <Layout>
-    <SEO title='About' />
-    <div>
-      <Tag colorScheme='cyan' variant='subtle'>
-        <TagLeftIcon as={ReactLogo} />
-        <TagLabel>React</TagLabel>
-      </Tag>
-      <Tag colorScheme='yellow' variant='subtle'>
-        <TagLeftIcon as={Javascript} />
-        <TagLabel>JavaScript</TagLabel>
-      </Tag>
-      <Tag colorScheme='blue' variant='subtle'>
-        <TagLeftIcon as={Typescript} />
-        <TagLabel>TypeScript</TagLabel>
-      </Tag>
-      <Tag colorScheme='purple' variant='subtle'>
-        <TagLeftIcon as={Redux} />
-        <TagLabel>Redux</TagLabel>
-      </Tag>
-      <Tag colorScheme='green' variant='subtle'>
-        <TagLeftIcon as={Mongodb} />
-        <TagLabel>MongoDB</TagLabel>
-      </Tag>
-      <Tag colorScheme='red' variant='subtle'>
-        <TagLeftIcon as={Nestjs} />
-        <TagLabel>NestJS</TagLabel>
-      </Tag>
-      <Tag colorScheme='gray' variant='subtle'>
-        <TagLeftIcon as={Cypress} />
-        <TagLabel>Cypress</TagLabel>
-      </Tag>
-      <TechTag tech='react' />
-    </div>
-  </Layout>
-)
-export default about
+const AboutPage = ({ data }) => {
+  const { primary } = useColors()
+  console.log(data)
+  return (
+    <Layout>
+      <SEO title='About' />
+      <div></div>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    articles: allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/articles/" } }
+      limit: 5
+    ) {
+      nodes {
+        fields {
+          slug
+          readingTime {
+            text
+          }
+        }
+        frontmatter {
+          date(locale: "en-gb", formatString: "ll")
+          title
+        }
+      }
+    }
+    projects: allMdx(
+      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+      sort: { fields: [frontmatter___maintained], order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          title
+          link
+          description
+          maintained
+          thumbnail {
+            childImageSharp {
+              fixed(width: 48, height: 48) {
+                ...GatsbyImageSharpFixed_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+    page: mdx(fileAbsolutePath: { regex: "/content/pages/home/" }) {
+      frontmatter {
+        header
+        subheader
+        photo {
+          childImageSharp {
+            fixed(width: 112, height: 112) {
+              ...GatsbyImageSharpFixed_withWebp
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default AboutPage

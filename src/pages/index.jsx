@@ -1,5 +1,6 @@
-import { Flex, Heading, Stack } from '@chakra-ui/core'
-import React from 'react'
+import { Flex, Heading, Stack, Text, Box } from '@chakra-ui/core'
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
@@ -26,13 +27,24 @@ const SectionHeading = ({ heading }) => {
 }
 
 const IndexPage = ({ data }) => {
+  console.log(data.articles)
+  const page = {
+    header: data.page.frontmatter.header,
+    subheader: data.page.frontmatter.subheader,
+    photo: data.page.frontmatter.photo.childImageSharp.fixed
+  }
   const articles = data.articles.nodes.map(node => ({
-    ...node.frontmatter,
-    link: node.slug,
+    title: node.frontmatter.title,
+    date: node.frontmatter.date,
+    link: node.fields.slug,
     readingTime: node.fields.readingTime.text
   }))
   const projects = data.projects.nodes.map(node => ({
-    ...node.frontmatter
+    title: node.frontmatter.title,
+    description: node.frontmatter.description,
+    link: node.frontmatter.link,
+    maintained: node.frontmatter.maintained,
+    thumbnail: node.frontmatter.thumbnail.childImageSharp.fixed
   }))
 
   const { primary } = useColors()
@@ -41,11 +53,42 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title='Home' />
       <Stack spacing={12}>
-        <Flex direction='column'>
+        <Flex
+          direction={{ base: 'column', sm: 'row' }}
+          mt={7}
+          align='center'
+          justify='center'
+        >
+          <Box
+            as={Img}
+            fixed={page.photo}
+            boxSize='7rem'
+            mr={{ base: 0, sm: 4 }}
+            mb={{ base: 4, sm: 0 }}
+            background='gray.400'
+            borderRadius='full'
+            borderWidth='2px'
+            borderStyle='solid'
+            borderColor={primary}
+          />
+          <Stack direction='column' align='flex-start' justify='center'>
+            <Heading
+              as='h1'
+              fontFamily='Montserrat'
+              fontWeight='normal'
+              borderBottomColor={primary}
+              borderBottomWidth='2px'
+            >
+              {page.header}
+            </Heading>
+            <Text fontSize='lg'>{page.subheader}</Text>
+          </Stack>
+        </Flex>
+        <Flex as='section' direction='column'>
           <SectionHeading heading='Latest articles' />
           <ArticleList articles={articles} isCondensed />
         </Flex>
-        <Flex direction='column'>
+        <Flex as='section' direction='column'>
           <SectionHeading heading='Projects' />
           <ProjectList projects={projects} />
         </Flex>
@@ -63,6 +106,7 @@ export const query = graphql`
     ) {
       nodes {
         fields {
+          slug
           readingTime {
             text
           }
@@ -71,11 +115,11 @@ export const query = graphql`
           date(locale: "en-gb", formatString: "ll")
           title
         }
-        slug
       }
     }
     projects: allMdx(
       filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+      sort: { fields: [frontmatter___maintained], order: DESC }
     ) {
       nodes {
         frontmatter {
@@ -83,6 +127,26 @@ export const query = graphql`
           link
           description
           maintained
+          thumbnail {
+            childImageSharp {
+              fixed(width: 48, height: 48) {
+                ...GatsbyImageSharpFixed_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+    page: mdx(fileAbsolutePath: { regex: "/content/pages/home/" }) {
+      frontmatter {
+        header
+        subheader
+        photo {
+          childImageSharp {
+            fixed(width: 112, height: 112) {
+              ...GatsbyImageSharpFixed_withWebp
+            }
+          }
         }
       }
     }

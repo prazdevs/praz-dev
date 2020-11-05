@@ -2,7 +2,6 @@
 title: Dark mode in a React app with Context and Styled-components
 category: blog
 date: 2020-05-22
-thumbnail: ../images/react-theme-switch.png
 tags: [react]
 ---
 

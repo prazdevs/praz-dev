@@ -5,7 +5,6 @@ module.exports = {
     author: `@gatsbyjs`
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,16 +12,18 @@ module.exports = {
         path: `${__dirname}/content`
       }
     },
-    `gatsby-plugin-chakra-ui`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`]
       }
     },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-chakra-ui`,
+    `gatsby-plugin-sharp`,
     `gatsby-remark-reading-time`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
