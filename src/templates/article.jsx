@@ -1,4 +1,4 @@
-import { Heading, Box, Icon, Text, Flex, HStack, Code } from '@chakra-ui/core'
+import { Heading, Icon, Text, Flex, HStack } from '@chakra-ui/core'
 import { MDXProvider } from '@mdx-js/react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -7,6 +7,7 @@ import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
 import { Calendar, Watch } from 'emotion-icons/feather'
 import Pre from '../components/mdx/Pre'
+import MdxComponents from '../components/MdxComponents'
 
 export default ({ data }) => {
   const { primary } = useColors()
@@ -18,9 +19,6 @@ export default ({ data }) => {
     body: data.mdx.body
   }
 
-  console.log('mdxAST', data.mdx.mdxAST)
-  console.log('body', data.mdx.body)
-
   return (
     <Layout>
       <SEO title={article.title} />
@@ -29,7 +27,7 @@ export default ({ data }) => {
         fontSize='4xl'
         textAlign='center'
         fontFamily='Montserrat'
-        fontWeight='normal'
+        fontWeight='600'
         mt={7}
         mb={3}
       >
@@ -54,10 +52,9 @@ export default ({ data }) => {
         </HStack>
       </Flex>
 
-      <MDXProvider components={{ pre: Pre }}>
+      <MDXProvider components={MdxComponents}>
         <MDXRenderer>{article.body}</MDXRenderer>
       </MDXProvider>
-      {/* </MDXProvider> */}
     </Layout>
   )
 }

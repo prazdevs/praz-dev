@@ -1,10 +1,10 @@
-import { useColorMode } from '@chakra-ui/core'
+import { useColorModeValue } from '@chakra-ui/core'
 
 const useColors = () => {
-  const { colorMode } = useColorMode()
-  const primary = colorMode === 'light' ? '#b60000' : '#ff8787'
+  const primary = useColorModeValue('#b60000', '#ff8787')
+  const body = useColorModeValue('#1A202C', '#ffffffeb')
 
-  return { primary }
+  return { primary, body }
 }
 
 export default useColors

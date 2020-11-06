@@ -43,7 +43,7 @@ Then we need to add Mongoose to connect to our database. NestJs provides a modul
 
 We will now configure the main `App` module to access both our `.env` variables and our database.
 
-```ts:title=src/app.module.ts
+```ts title=src/app.module.ts
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -72,7 +72,7 @@ We won't touch our App module anymore. Now let's move onto the Auth module. We w
 
 We then add some imports in our Auth module.
 
-```ts:title=src/auth/auth.module.ts
+```ts title=src/auth/auth.module.ts
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -94,7 +94,7 @@ export class AuthModule {}
 
 In the App module, we configured Mongoose for the whole app, while here, we configure it only for our auth, using a `UserSchema`. Let's create that schema right away.
 
-```ts:title=src/auth/schemas/user.schema.ts
+```ts title=src/auth/schemas/user.schema.ts
 import * as mongoose from 'mongoose';
 
 export const UserSchema = new mongoose.Schema({
@@ -122,7 +122,7 @@ To sign-up (and later sign-in), we will request a user to input a username and a
 
 We will use something that you might already be familiar with: a Data Transfer Object or DTO. Not only DTOs allow us to keep the same data structure from the controller to the service, but NestJs also provides validation and transformation (casting a string to an int for instance) through the DTO. We need 2 packages for that, so we run `yarn add class-validator class-transformer`. Let's now create our `AuthCredentialsDto`.
 
-```ts:title=src/auth/dto/auth-credentials.dto.ts
+```ts title=src/auth/dto/auth-credentials.dto.ts
 import { IsString, MaxLength, MinLength } from 'class-validator';
 
 export class AuthCredentialsDto {
@@ -141,7 +141,7 @@ export class AuthCredentialsDto {
 As you can see, we take advantages of decorators again. Those will be tested when run through a "Validation Pipe" that we will set up in the controller, don't worry Nest makes it super easy.
 Before modifying our service, we will add a well known package to secure our passwords : bcrypt. You don't want to store plain text passwords do you? Just run `yarn add bcrypt` and `yarn add -D @types/bcrypt` for types. On final addition we need before the service is creating a User interface. It will ensure we keep a consistent structure for our User model.
 
-```ts:title=src/auth/interfaces/user.interface.ts
+```ts title=src/auth/interfaces/user.interface.ts
 import { Document } from 'mongoose';
 
 export interface User extends Document {
@@ -152,7 +152,7 @@ export interface User extends Document {
 
 And we can finally modify our service and use everything we built so far.
 
-```ts:title=src/auth/auth.service.ts
+```ts title=src/auth/auth.service.ts
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
@@ -187,7 +187,7 @@ export class AuthService {
 We use the Dependecy Injection provided by Nest to inject our Mongoose model in the service, to do so, we simply put the model in the constructor with the decorator provided by the Mongoose module. Then, the rest should be self-explanatory: destructure our credentials, hash the password with bcrypt (be careful not to forget to await the operation), create the model and try to save it.
 We catch potential errors and take care of the `11000` error with a particular throw: this error means a unique value already exists in the database. Throwing this exception, Nest will handle the controller response automatically and return a different code with a meaningful error. Speaking of controller, let's move onto it and add the signup route.
 
-```ts:title=src/auth/auth.controller.ts
+```ts title=src/auth/auth.controller.ts
 import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
@@ -214,7 +214,7 @@ We want our users to be able to access protected routes. For this we'll use JWT 
 
 Let's start by configuring our auth module to use the new Nest modules we added.
 
-```ts:title=src/auth/auth.module.ts
+```ts title=src/auth/auth.module.ts
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
@@ -247,7 +247,7 @@ export class AuthModule {}
 We import the Passport module provided by Nest as well as the Jwt module. Add a new `JWT_SECRET` environment variable (or in your .env file) with a value of your choice, preferably long.
 We also added two strategies as providers, let's start by making the local one.
 
-```ts:title=src/auth/strategies/local.strategy.ts
+```ts title=src/auth/strategies/local.strategy.ts
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
@@ -272,7 +272,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
 We extend the base `PassportStrategy` with the `Strategy` from `passport-local`. We then need to implement a `validate` method that validate the credentials. Because the validation logic does not belong in the strategy, we implement it in the `AuthService`, and get it through Dependency Injection in the constructor as usual. If validation fails, the error thrown will be handled by Nest to return a 403 to the user. Let's now add more functionnality to our service for signing in.
 
-```ts:title=src/auth/auth.service.ts
+```ts title=src/auth/auth.service.ts
 import { ConflictException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
@@ -331,7 +331,7 @@ Guards are a feature of NestJs capable of intercepting requests made to a contro
 
 As you can see, with NestJs, everything is layered and organized: one component does one thing. Let's create out local-auth guard and the guarded signin route.
 
-```ts:title=src/auth/guards/local-auth.guard.ts
+```ts title=src/auth/guards/local-auth.guard.ts
 import { Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -341,7 +341,7 @@ export class LocalAuthGuard extends AuthGuard('local') {}
 
 It's as simple as that. Now we can add a signin route, guarded by the local-auth guard, that calls the `signIn` method.
 
-```ts:title=src/auth/auth.controller.ts
+```ts title=src/auth/auth.controller.ts
 import {
   Body,
   Controller,
@@ -381,7 +381,7 @@ And here we are! We now have a route to request a valid accessToken with valid c
 The signin route is actually a route guarded by credentials validation. Any other protected route will just be a route guarded by jwt validation. That simple means we will create a new strategy based on jwt and its matching guard to protect our routes.
 Let's start by creating the Passport strategy to use Jwt. We already imported it in the Auth module earlier.
 
-```ts:title=src/auth/strategies/jwt-auth.strategy.ts
+```ts title=src/auth/strategies/jwt-auth.strategy.ts
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
@@ -406,7 +406,7 @@ Nothing fancy here, we are configuring the strategy to extract the token as Bear
 
 We now create a guard, the exact same way we did for the local-auth.
 
-```ts:title=src/auth/guards/jwt-auth.guard.ts
+```ts title=src/auth/guards/jwt-auth.guard.ts
 import { Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -416,7 +416,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {}
 
 And we can finally use that guard to protect a route. We will add a very simple route to get our user info as an example. Here is what our controller should look like.
 
-```ts:title=src/auth/auth.controller.ts
+```ts title=src/auth/auth.controller.ts
 import {
   Body,
   Controller,

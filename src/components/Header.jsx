@@ -6,7 +6,6 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
-  Heading,
   Icon,
   IconButton,
   Link,
@@ -73,7 +72,8 @@ const Header = () => {
       w='full'
       borderBottomWidth='1px'
       fontFamily='Montserrat'
-      background={colorMode === 'light' ? 'white' : 'gray.800'}
+      backgroundColor={colorMode === 'light' ? 'white' : 'gray.800'}
+      transition='background-color 0.2s'
     >
       <Box h={{ base: '3.5rem', sm: '4.5rem' }} maxW='62em' mx='auto'>
         <Flex w='full' h='full' px='4' align='center' justify='space-between'>
@@ -86,7 +86,7 @@ const Header = () => {
             <Text>praz.dev</Text>
           </Flex>
           <Stack spacing={6} direction='row' d={{ base: 'none', sm: 'flex' }}>
-            <Flex as='nav' role='navigation'>
+            <Flex as='nav'>
               <NavLinks spacing={4} direction='row' />
             </Flex>
             <ThemeButton />

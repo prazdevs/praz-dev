@@ -3,6 +3,7 @@ title: From hate to love, a Javascript story
 category: blog
 date: 2019-12-21
 tags: [storytime, javascript]
+description: 
 ---
 
 My mother used to tell me: "only fools never change their mind". Well, mother knows best, because I did it. Let's be honest here, who never made fun of JavaScript among the developers community? No one. There are so many funny jokes and memes about JavaScript, and most of them are part if not completely true. How did I miss out for so long on the world's most used language?

@@ -4,20 +4,21 @@ category: blog
 date: 2020-06-30
 tags: [react, redux]
 ---
+# Handling async authentication flow in React with Redux & Redux-Saga
 
 Redux is an amazing state management solution but it doesn't allow proper handling of asynchronous operations. You may have heard of a common solution that is the `redux-thunk` middleware. But for this time, we will use another solution called `redux-saga`. Sagas make use of generator functions (introduced in ES6) to handle impure actions. In this post we'll build a small (and fairly ugly, no styling this time) React app that implements a basic authentication flow. We'll use `json-server` as a fake backend to keep things simple and frontend-centered.
 
-# Preparing the project
+## Preparing the project
 
 Let's start with creating and adding everything we need before diving into Redux things.
 
-##### Creating the app and adding dependencies
+### Creating the app and adding dependencies
 
 You're probably used to creating apps by now, so as usual, let's use the `yarn create react-app redux-sagas-auth` to create our app.
 
 Then we add some dev dependencies for our backend with `yarn add -D json-server json-server-auth`, and dependencies for our frontend with `yarn add axios redux react-redux redux-saga redux-logger`.
 
-##### Setting up the backend environment
+### Setting up the backend environment
 
 If you're not familiar with _json-server_, it's a great way to mock a REST API and database from a simple json file. We are using `json-server-auth` which implements JWT based authentication on top of json-server, you can learn more about that amazing package [here](https://www.npmjs.com/package/json-server-auth). Let's add some scripts and a proxy to our `package.json` to start up our backend server.
 
@@ -50,11 +51,11 @@ And that's it, we can start our server by running `yarn server` and we should se
 
 _Note: feel free to clean up the default CRA app, I usually strip it down to a single h1 tag._
 
-### Redux and sagas
+## Redux and sagas
 
 I assume you are a bit familiar with Redux, if not, feel free to check [their documentation](https://redux.js.org/), there is a lot to be learnt from there. _Reducers are just pure functions that take the previous state and an action, and return the next state_ (taken from the documentation), that's great but when it comes to handling impure behaviors such as asynchronous calls (like our API calls), we need to add a bit to Redux. As stated earlier, you could use thunks which are fairly simple (don't let the name fool you). Or you could use... sagas. Sagas make use of generator functions, if you're not familiar with them, I recommend checking [this great article from Tania Rascia](https://www.taniarascia.com/understanding-generators-in-javascript/). Let's configure Redux in our app.
 
-##### Creating the store
+### Creating the store
 
 Let's start by adding the provider in our `index.js`.
 
@@ -102,7 +103,7 @@ We simply create our store with a root reducer (that we will add right after) an
 - `redux-logger` will log everything that passes through Redux, you can see it as a simple version of the more complete `redux-devtools`. Note that you don't want to log everything in production, so be careful to only add the middleware in your dev environment.
 - `redux-saga` will handle the sagas (duh) and deal with our asynchronous behavior, we pass it a root saga in the same fashion as we pass a root reducer to the store creation method.
 
-##### Adding actions, action creators and reducers
+### Adding actions, action creators and reducers
 
 Our store will only have one reducer (and one module basically), the auth one. So let's now create our root reducer, nothing fancy.
 
@@ -209,7 +210,7 @@ The reducer's goal is to upate the state. It cannot handle impure functions, tha
 
 That's it for our usual Redux stuff, it is time to get our hands dirty with sagas, and make clean code.
 
-##### Creating sagas
+### Creating sagas
 
 First we need a root saga, as opposed to the root reducer.
 
@@ -315,9 +316,9 @@ Finally, the exported `authSagas` combines the effect creators, just like the ro
 
 And if you think of it, all of our actions can now be handled properly, so let's create some very basic form components and try it out!
 
-### Putting things together
+## Putting things together
 
-##### Creating components
+### Creating components
 
 I decided to go for some very basic and ugly components to keep the focus on Redux and not styling. We start with login.
 
@@ -459,7 +460,7 @@ export default App;
 
 It's time to try things out in the browser!
 
-##### Seeing our sagas in action
+### Seeing our sagas in action
 
 If you didn't already, start your react app with `yarn start`. Let's also open the browser console.
 If we try creating a user, it should work fine and we should also be logged in right away!

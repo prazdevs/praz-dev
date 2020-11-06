@@ -7,8 +7,10 @@ import {
   Mongodb,
   NodeDotJs,
   Heroku,
-  Javascript
+  Javascript,
+  Rust
 } from 'emotion-icons/simple-icons'
+import { Coffee } from 'emotion-icons/zondicons'
 
 const tagValues = tech => {
   switch (tech) {
@@ -59,6 +61,18 @@ const tagValues = tech => {
         label: 'JavaScript',
         color: 'yellow',
         icon: Javascript
+      }
+    case 'rust':
+      return {
+        label: 'Rust',
+        color: 'orange',
+        icon: Rust
+      }
+    case 'storytime':
+      return {
+        label: 'Storytime',
+        color: 'pink',
+        icon: Coffee
       }
     default:
       return { label: tech, color: undefined, icon: null }

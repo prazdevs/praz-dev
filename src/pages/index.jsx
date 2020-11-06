@@ -63,6 +63,7 @@ const IndexPage = ({ data }) => {
             as={Img}
             fixed={page.photo}
             boxSize='7rem'
+            zIndex='-1'
             mr={{ base: 0, sm: 4 }}
             mb={{ base: 4, sm: 0 }}
             background='gray.400'
