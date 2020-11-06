@@ -15,7 +15,7 @@ The command pattern is fairly simple: we encapsulate everything we need to perfo
 
 Let's start by creating a simple abstract command, so we know what every command we add should look like. We need to be able to know if it can be executed as well as trigger its execution. So we have a class as as simple as that:
 
-```typescript:title=src/commands/Command.ts
+```typescript title=src/commands/Command.ts
 export enum CommandType {
   ping,
   say,
@@ -35,7 +35,7 @@ The class is abstract because it is our blueprint, therefore, the methods are al
 
 Now that we have our blueprints, let's start building the actual commands with the `Ping` one. The `Client` object from Discord.JS holds a `ping` property giving the value of our bot's latency with the server. A `Message` will be the receiver of that command as it will call its `channel`'s `send` method to respond to the user. Here is our command:
 
-```typescript:title=src/commands/Ping.command.ts
+```typescript title=src/commands/Ping.command.ts
 import { Client, Message } from 'discord.js';
 
 import { Command, CommandType } from './Command';
@@ -73,7 +73,7 @@ We can now repond to a message with the latency. Interesting... While we are imp
 
 Following the exact same schema, we can implement the following:
 
-```typescript:title=src/commands/Say.command.ts
+```typescript title=src/commands/Say.command.ts
 import { Message } from 'discord.js';
 
 import { Command, CommandType } from './Command';
@@ -115,7 +115,7 @@ But wait a minute; how do we intercept the "say" or "ping" keywords from message
 
 We want to build commands from Discord messages, luckily, as we did earlier with our very basic first version of the bot, we can intercept messages from Discord text channels thanks to an event handler. But let's first try to create our commands from just a `Message` intercepted by the event handler. For that, we will use the Factory design pattern and build a command factory, it should parse a message and generate the appropriate `Command` then try to execute it.
 
-```typescript:title=src/commands/CommandFactory.ts
+```typescript title=src/commands/CommandFactory.ts
 import { Client, Message } from 'discord.js';
 
 import { Command, CommandType } from './Command';
@@ -175,7 +175,7 @@ In our `createCommand` method, we directly parse the command with the previously
 
 Let's head back to our `DiscordBot` class and give it a `CommandFactory`.
 
-```typescript:title=src/commands/CommandFactory.ts
+```typescript title=src/commands/CommandFactory.ts
 import { CommandFactory } from './commands/CommandFactory';
 
 //...
@@ -195,7 +195,7 @@ export class DiscordBot {
 
 Then we refactor our `setMessageHandler` to handle messages and react to commands.
 
-```typescript:title=src/commands/CommandFactory.ts
+```typescript title=src/commands/CommandFactory.ts
 //...
 
 private setMessageHandler(): void {

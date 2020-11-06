@@ -1,1 +1,2 @@
-import 'typeface-montserrat'
+import 'fontsource-montserrat'
+import 'fontsource-jetbrains-mono'

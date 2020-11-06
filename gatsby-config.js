@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -12,18 +13,35 @@ module.exports = {
         path: `${__dirname}/content`
       }
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-remark-images`,
+      options: {
+        maxWidth: 800,
+        backgroundColor: `transparent`,
+        showCaptions: true
+      }
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: [`.md`, `.mdx`]
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              backgroundColor: `transparent`,
+              showCaptions: true
+            }
+          }
+        ]
       }
     },
-    `gatsby-plugin-react-helmet`,
+
     `gatsby-plugin-chakra-ui`,
-    `gatsby-plugin-sharp`,
     `gatsby-remark-reading-time`,
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

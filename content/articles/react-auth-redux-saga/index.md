@@ -7,7 +7,7 @@ tags: [react, redux]
 
 Redux is an amazing state management solution but it doesn't allow proper handling of asynchronous operations. You may have heard of a common solution that is the `redux-thunk` middleware. But for this time, we will use another solution called `redux-saga`. Sagas make use of generator functions (introduced in ES6) to handle impure actions. In this post we'll build a small (and fairly ugly, no styling this time) React app that implements a basic authentication flow. We'll use `json-server` as a fake backend to keep things simple and frontend-centered.
 
-### Preparing the project
+# Preparing the project
 
 Let's start with creating and adding everything we need before diving into Redux things.
 
@@ -21,7 +21,7 @@ Then we add some dev dependencies for our backend with `yarn add -D json-server 
 
 If you're not familiar with _json-server_, it's a great way to mock a REST API and database from a simple json file. We are using `json-server-auth` which implements JWT based authentication on top of json-server, you can learn more about that amazing package [here](https://www.npmjs.com/package/json-server-auth). Let's add some scripts and a proxy to our `package.json` to start up our backend server.
 
-```json:title=package.json
+```json package.json
 {
   // ...
   "scripts": {
@@ -40,7 +40,7 @@ It simply runs the binary contained in the package with a `--port 3001` option t
 
 Finally, let's add our database json file at the root of the project.
 
-```json:title=db.json
+```json title=db.json
 {
   "users": []
 }
@@ -58,7 +58,7 @@ I assume you are a bit familiar with Redux, if not, feel free to check [their do
 
 Let's start by adding the provider in our `index.js`.
 
-```js:title=src/index.js
+```js title=src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -78,7 +78,7 @@ ReactDOM.render(
 
 Now let's create the store itself.
 
-```js:title=src/store/index.js
+```js title=src/store/index.js
 import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
@@ -106,7 +106,7 @@ We simply create our store with a root reducer (that we will add right after) an
 
 Our store will only have one reducer (and one module basically), the auth one. So let's now create our root reducer, nothing fancy.
 
-```js:title=src/store/rootReducer.js
+```js title=src/store/rootReducer.js
 import { combineReducers } from 'redux';
 
 import auth from './auth/authReducer';
@@ -116,7 +116,7 @@ export default combineReducers({ auth });
 
 I personally like defining the action types available first, and I try to be exhaustive, that way, I am less prone to forget one. Here are our action types for authentication.
 
-```js:title=src/store/auth/authActionTypes.js
+```js title=src/store/auth/authActionTypes.js
 const userActionTypes = {
   LOG_IN_START: 'LOG_IN_START',
   LOG_IN_SUCCESS: 'LOG_IN_SUCCESS',
@@ -133,7 +133,7 @@ export default userActionTypes;
 For both asynchronous actions, we define an entry point and two issues: success or failure. The `LOG_OUT` will not call the API and simply wipe our token from the store.
 Let's add the action creators.
 
-```js:title=src/store/auth/authActions.js
+```js title=src/store/auth/authActions.js
 import types from './authActionTypes';
 
 export const logInStart = (credentials) => ({
@@ -173,7 +173,7 @@ export const logOut = () => ({
 
 Nothing special here either, we make sure to pass the right payload depending on the situation. Finally, we add the reducer.
 
-```js:title=src/store/auth/authReducer.js
+```js title=src/store/auth/authReducer.js
 import types from './authActionTypes';
 
 const INITIAL_STATE = {
@@ -213,7 +213,7 @@ That's it for our usual Redux stuff, it is time to get our hands dirty with saga
 
 First we need a root saga, as opposed to the root reducer.
 
-```js:title=src/store/rootSaga.js
+```js title=src/store/rootSaga.js
 import { all, call } from 'redux-saga/effects';
 
 import { authSagas } from './auth/authSagas';
@@ -228,7 +228,7 @@ _"In redux-saga, Sagas are implemented using Generator functions. To express the
 
 Now let's create our auth sagas.
 
-```js:title=src/store/auth/authSagas/js
+```js title=src/store/auth/authSagas/js
 import axios from 'axios';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
@@ -321,7 +321,7 @@ And if you think of it, all of our actions can now be handled properly, so let's
 
 I decided to go for some very basic and ugly components to keep the focus on Redux and not styling. We start with login.
 
-```js:title=src/components/LogIn.js
+```js title=src/components/LogIn.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -371,7 +371,7 @@ export default LogIn;
 
 Then onto the registration.
 
-```js:title=src/components/Register.js
+```js title=src/components/Register.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -422,7 +422,7 @@ export default Register;
 They are so similar we could have only made one more generic component, but in a real world app, we usually have different logic and complexity in those.  
 Add the fresh components to the main app with some conditional rendering based on the store data, put a logout button and an error display.
 
-```js:title=src/App.js
+```js title=src/App.js
 import './App.css';
 
 import React from 'react';
