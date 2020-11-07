@@ -7331,10 +7331,20 @@ fontsource-jetbrains-mono@^3.0.5:
   resolved "https://registry.yarnpkg.com/fontsource-jetbrains-mono/-/fontsource-jetbrains-mono-3.0.5.tgz#667f007067837aacb8c33a1acb9385a1008a665f"
   integrity sha512-1BCPh1V61umUOq21HitHpdRmOx4BsQiXl4H3AeoRkfQkqcBT4XDoZJNTAodlrEsNry0yBuzsByIDtkXrfFItaw==
 
+fontsource-marck-script@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/fontsource-marck-script/-/fontsource-marck-script-3.0.9.tgz#883db071162a319c1ff11007a39ec83f51e892e3"
+  integrity sha512-gN8erTobEkTyxKwcNyTwj5nTrfEwyxhc5L4f2TwsgQ3zHECnm5D56eb8vzBltETypXhiq6NwXChjCjXFoK/aZQ==
+
 fontsource-montserrat@^3.0.9:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/fontsource-montserrat/-/fontsource-montserrat-3.0.9.tgz#ff614725c420839c4aefbca6f2b49c6224050991"
   integrity sha512-kSE4GwWoEKJlIp0UyuoYtBvjKv5kwOTK7EvCwdQ7ukvKvgIK1LR5+GpZC5c/juonasNtFTKav67Zd7/C7m+a5w==
+
+fontsource-neucha@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/fontsource-neucha/-/fontsource-neucha-3.0.9.tgz#8be981102d385ee80b29c7655f60b4326ca23ca2"
+  integrity sha512-Ze6mARnGepg59NZkXt+VDsiVEcZDfOsK450wmsCzmFLdk0kGMf2Smuw8KEXRBLPr+O5F9W3Kuv2zozOlarrPsg==
 
 for-in@^1.0.2:
   version "1.0.2"

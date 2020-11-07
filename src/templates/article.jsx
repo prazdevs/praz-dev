@@ -6,7 +6,6 @@ import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
 import { Calendar, Watch } from 'emotion-icons/feather'
-import Pre from '../components/mdx/Pre'
 import MdxComponents from '../components/MdxComponents'
 
 export default ({ data }) => {

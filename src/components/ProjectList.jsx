@@ -21,7 +21,7 @@ const ProjectList = ({ projects }) => {
               as='h3'
               fontSize='xl'
               fontFamily='Montserrat'
-              fontWeight='normal'
+              fontWeight='500'
             >
               <Link
                 href={project.link}

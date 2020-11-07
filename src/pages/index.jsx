@@ -14,7 +14,7 @@ const SectionHeading = ({ heading }) => {
     <Heading
       as='h2'
       fontFamily='Montserrat'
-      fontWeight='normal'
+      fontWeight='600'
       fontSize='3xl'
       mr='auto'
       mb={4}
@@ -63,7 +63,6 @@ const IndexPage = ({ data }) => {
             as={Img}
             fixed={page.photo}
             boxSize='7rem'
-            zIndex='-1'
             mr={{ base: 0, sm: 4 }}
             mb={{ base: 4, sm: 0 }}
             background='gray.400'
@@ -76,7 +75,7 @@ const IndexPage = ({ data }) => {
             <Heading
               as='h1'
               fontFamily='Montserrat'
-              fontWeight='normal'
+              fontWeight='700'
               borderBottomColor={primary}
               borderBottomWidth='2px'
             >

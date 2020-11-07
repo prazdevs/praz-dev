@@ -1,10 +1,10 @@
 import { useColorMode, IconButton, Icon } from '@chakra-ui/core'
-import { Moon, Sun } from 'emotion-icons/feather'
+import { Moon, Sunny } from 'emotion-icons/ionicons-outline'
 
 const ThemeButton = () => {
   const { colorMode, toggleColorMode } = useColorMode()
 
-  const icon = colorMode === 'light' ? Moon : Sun
+  const icon = colorMode === 'light' ? Moon : Sunny
   const label = `Switch to ${colorMode === 'light' ? 'dark' : 'light'} theme`
 
   return (

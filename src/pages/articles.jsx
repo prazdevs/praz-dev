@@ -23,8 +23,7 @@ const ArticlesPage = ({ data }) => {
         <Heading
           as='h1'
           fontFamily='Montserrat'
-          fontWeight='normal'
-          fontSize='4xl'
+          fontWeight='700'
           mr='auto'
           mt={7}
           mb={4}
@@ -33,7 +32,7 @@ const ArticlesPage = ({ data }) => {
         >
           Articles
         </Heading>
-        <Text mb={8} fontSize='lg'>
+        <Text mb={8} fontSize='lg' fontWeigh='500'>
           You will find here posts about problems I encountered and solutions I
           found, as well as discoveries I made and thought were interesting to
           talk about.

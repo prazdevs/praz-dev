@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import { graphql } from 'gatsby'
 import useColors from '../hooks/useColors'
+import { Heading, Text } from '@chakra-ui/core'
 
 const AboutPage = ({ data }) => {
   const { primary } = useColors()
@@ -9,7 +10,15 @@ const AboutPage = ({ data }) => {
   return (
     <Layout>
       <SEO title='About' />
-      <div></div>
+      <div>
+        <Heading fontFamily='Montserrat' fontSize='3xl'>
+          this is h2
+        </Heading>
+        <Heading fontFamily='Montserrat' fontSize='2xl'>
+          this is h3
+        </Heading>
+        <Text fontFamily='Montserrat'>this is paragraph</Text>
+      </div>
     </Layout>
   )
 }

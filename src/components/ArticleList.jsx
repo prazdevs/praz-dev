@@ -26,7 +26,7 @@ const ArticleList = ({ articles, isCondensed }) => {
             as={isCondensed ? 'h3' : 'h2'}
             fontSize='xl'
             fontFamily='Montserrat'
-            fontWeight='normal'
+            fontWeight={isCondensed ? '500' : '600'}
           >
             <Link
               as={GatsbyLink}
