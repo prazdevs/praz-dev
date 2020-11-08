@@ -49,7 +49,7 @@ const NavLinks = ({ spacing, direction }) => (
     {[
       { link: '/', label: 'home' },
       { link: '/posts', label: 'posts' },
-      { link: '/about', label: 'about' }
+      // { link: '/about', label: 'about' }
     ].map(({ label, link }) => (
       <ListItem key={label}>
         <NavLink label={label} link={link} />

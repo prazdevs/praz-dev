@@ -1,13 +1,12 @@
-import { Flex, Heading, Stack, Text, Box, Icon, Link } from '@chakra-ui/core'
-import Img from 'gatsby-image'
+import { Box, Flex, Heading, Link, Stack, Text } from '@chakra-ui/core'
 import { Link as GatsbyLink } from 'gatsby'
-import { RightArrow } from 'emotion-icons/boxicons-regular'
+import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
-import SEO from '../components/Seo'
-import useColors from '../hooks/useColors'
 import PostList from '../components/PostList'
 import ProjectList from '../components/ProjectList'
+import SEO from '../components/Seo'
+import useColors from '../hooks/useColors'
 
 const SectionHeading = ({ heading }) => {
   const { primary } = useColors()
@@ -100,7 +99,6 @@ const IndexPage = ({ data }) => {
               _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
             >
               see all posts
-              {/* <Icon as={RightArrow} ml={2} /> */}
             </Link>
           </Text>
         </Flex>

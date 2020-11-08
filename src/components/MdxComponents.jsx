@@ -1,21 +1,21 @@
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import lightTheme from 'prism-react-renderer/themes/nightOwlLight'
-import darkTheme from 'prism-react-renderer/themes/nightOwl'
 import {
-  useColorModeValue,
-  Heading,
-  Text,
-  VisuallyHidden,
+  Code,
   Flex,
+  Heading,
+  Image,
+  Link,
   List,
   ListItem,
   OrderedList,
-  Code,
-  Link,
-  Image
+  Text,
+  useColorModeValue,
+  VisuallyHidden
 } from '@chakra-ui/core'
+import Highlight, { defaultProps } from 'prism-react-renderer'
+import darkTheme from 'prism-react-renderer/themes/nightOwl'
+import lightTheme from 'prism-react-renderer/themes/nightOwlLight'
+
 import useColors from '../hooks/useColors'
-import { Link as GatsbyLink } from 'gatsby'
 
 const Pre = props => {
   const theme = useColorModeValue(lightTheme, darkTheme)

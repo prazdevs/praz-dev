@@ -1,22 +1,10 @@
 import { Container } from '@chakra-ui/core'
-import { graphql, useStaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
 
 import ColorModeFix from './ColorModeFix'
 import Footer from './Footer'
 import Header from './Header'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <ColorModeFix />
@@ -34,10 +22,6 @@ const Layout = ({ children }) => {
       <Footer />
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
 }
 
 export default Layout

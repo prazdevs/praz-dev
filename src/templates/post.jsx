@@ -18,8 +18,6 @@ export default ({ data }) => {
     body: data.mdx.body
   }
 
-  console.log(data.mdx.mdxAST)
-
   return (
     <Layout>
       <SEO title={post.title} />
