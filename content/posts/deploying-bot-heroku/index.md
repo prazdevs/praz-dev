@@ -1,6 +1,5 @@
 ---
 title: Making a Discord bot with TypeScript and deploying to Heroku
-category: blog
 date: 2020-01-20
 tags: [typescript, node, heroku]
 ---
@@ -190,7 +189,7 @@ We now let it do its job until it's done, hopefully without a single error.
 
 We need to "activate" our worker dyno. From our app dashboard on Heroku. Next to `Dyno formation` is `Configure Dynos ->`. Click on it, turn the web off, and the worker on.
 
-![Just like this](heroku-dynos-discord.png)
+![Screenshot of the Heroku interface showing worker dyno on and web dyno off](heroku-dynos-discord.png)
 
 Finally, we set our `D_TOKEN` in our app's variables from the `Settings` tab in `Config Vars`.
 
@@ -198,4 +197,4 @@ And that's it. All we need to have a Discord bot running 24/7, built using TypeS
 
 ---
 
-_All this code is part of my ZoeBot3 project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/zoebot3) or in the [Projects section](https://praz.dev/projects). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_
+_All this code is part of my ZoeBot3 project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/zoebot3). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_

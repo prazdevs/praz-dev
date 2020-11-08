@@ -1,17 +1,16 @@
 ---
 title: Command and Factory patterns in a Discord bot with Typescript
-category: blog
 date: 2020-02-24
 tags: [typescript, node]
 ---
 
 In my [previous post](https://praz.dev/deploying-bot-heroku/), we implemented a Discord bot using TypeScript and Discord.JS and hosted it on Heroku. The bot was quite simple to say the least. We usually want bots to be reactive and respond to "commands". If you have used Discord bots before, you probably know about `!play MySong` or `+role Green`. Those are commands, and it is time to add features to our bot with several of them. But here is the twist, since we work with TypeScript, we will implement those following some design patterns, allowing us to easily add more while keeping our code as clean as possible! We will add add 2 very simple commands: a `ping` command returning the latency of our bot with the discord server and a `say` command that will make the bot repeat what is passed as parameter before deleting our command message. It will be easy I promise, so bear with me.
 
-### Commands
+## Commands
 
 The command pattern is fairly simple: we encapsulate everything we need to perform an action in a "command", so we can later on verify is that action is doable, and trigger it. You may find more information on the pattern [here](https://sourcemaking.com/design_patterns/command).
 
-##### Abstract Command
+### Abstract Command
 
 Let's start by creating a simple abstract command, so we know what every command we add should look like. We need to be able to know if it can be executed as well as trigger its execution. So we have a class as as simple as that:
 
@@ -31,7 +30,7 @@ Wait, what is that `<CommandType>` thing? We will later implement a way to creat
 
 The class is abstract because it is our blueprint, therefore, the methods are also abstract.
 
-##### Ping Command
+### Ping Command
 
 Now that we have our blueprints, let's start building the actual commands with the `Ping` one. The `Client` object from Discord.JS holds a `ping` property giving the value of our bot's latency with the server. A `Message` will be the receiver of that command as it will call its `channel`'s `send` method to respond to the user. Here is our command:
 
@@ -69,7 +68,7 @@ We extend Command with the type set to `ping`, and pass what we need to the cons
 
 We can now repond to a message with the latency. Interesting... While we are implementing the commands, let's also implement the `Say` command before deciding what should trigger them.
 
-##### Say Command
+### Say Command
 
 Following the exact same schema, we can implement the following:
 
@@ -111,7 +110,7 @@ We can now make our bot look like it just typed by itself! That can be of great 
 
 But wait a minute; how do we intercept the "say" or "ping" keywords from messages and create our commands? It is time to industrialize the command creation with a Factory pattern!
 
-### Factory
+## Factory
 
 We want to build commands from Discord messages, luckily, as we did earlier with our very basic first version of the bot, we can intercept messages from Discord text channels thanks to an event handler. But let's first try to create our commands from just a `Message` intercepted by the event handler. For that, we will use the Factory design pattern and build a command factory, it should parse a message and generate the appropriate `Command` then try to execute it.
 
@@ -155,7 +154,7 @@ export class CommandFactory {
 
 Let's break that one down together.
 
-##### Parsing & creating the command
+### Parsing & creating the command
 
 A command message sent in a Discord channel should look like this: `{prefix}{keyword} {arguments}`.
 
@@ -171,7 +170,7 @@ The next line is interesting: `CommandType[keyword as keyof typeof CommandType]`
 
 In our `createCommand` method, we directly parse the command with the previously explained `parseCommand`. Then we `switch` on the possible values of our `CommandType` enum, if the `keyword` value is not implemented, we return null, no command is created. We can finally rework our message handler in our `DiscordBot`.
 
-##### Calling the factory and handling commands
+### Calling the factory and handling commands
 
 Let's head back to our `DiscordBot` class and give it a `CommandFactory`.
 
@@ -221,4 +220,4 @@ And that's all folks! Time to commit our code and push it to Heroku to try our n
 
 ---
 
-_All this code is part of my ZoeBot3 project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/zoebot3) or in the [Projects section](https://praz.dev/projects). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_
+_All this code is part of my ZoeBot3 project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/zoebot3). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_

@@ -1,6 +1,5 @@
 ---
 title: Posting Reddit submissions to Discord & Twitter automatically
-category: blog
 date: 2020-03-15
 tags: [typescript, node]
 ---
@@ -8,15 +7,15 @@ tags: [typescript, node]
 Now that our Discord bot can [execute commands](https://praz.dev/abstract-commands-discord), how about we add more features into it?
 Reddit is a well known platform used by many communities to share around a given topic. But since I mainly use Discord and don't have much time browsing Reddit, I realised being able to see what was being posted on Reddit from Discord was a great idea and so it was time for our bot to get its upgrade.
 
-### Fetching data from Reddit
+## Fetching data from Reddit
 
 The [reddit API](https://www.reddit.com/dev/api/) is really complete but also quite complex. Every post on reddit is called a "submission", and they hold quite a lot of properties, including metadata and links to external content. Thanks to the great NodeJs community, _there's a package for that_. [Snoowrap](https://www.npmjs.com/package/snoowrap) comes with nice [documentation](https://not-an-aardvark.github.io/snoowrap/snoowrap.html) and is perfect for our needs. We simple run `yarn add snoowrap` as it already contains types for our TypeScript needs.
 
-##### Reddit posts for our needs
+### Reddit posts for our needs
 
 When fetching submissions with Snoowrap, we get raw complete `submission` objects containing a lot of properties we won't need. So we will first create our own custom object with only what we need. I made arbitrary choices and settled with a few, up to you to change them according to your needs. We get a `RedditPost` class similar to this:
 
-```typescript:title=src/reddit/RedditPost.ts
+```typescript title=src/reddit/RedditPost.ts
 import { Submission } from 'snoowrap';
 
 export class RedditPost {
@@ -52,11 +51,11 @@ export class RedditPost {
 
 If you're not familiar these names, feel free to look into the documentation or try to fetch complete submissions and see how they look like. For now we'll settle with that one; everytime we fetch a submission, we will create a `RedditPost` object and work with it.
 
-##### Fetching the submissions
+### Fetching the submissions
 
 Snoowrap gives us an object also called `snoowrap` that gives us access to the Reddit API. We will create our own `SubredditFetcher` that holds and uses it to get posts (or more if you feel like it) from a given subreddit. We will need the [Moment](https://momentjs.com/) package so make sure to import it with `yarn add moment`. Here is the class:
 
-```typescript:title=src/reddit/SubredditFetcher.ts
+```typescript title=src/reddit/SubredditFetcher.ts
 import moment from 'moment';
 import snoowrap, { Submission } from 'snoowrap';
 
@@ -99,15 +98,15 @@ As you can wee, when we instantiate our SubredditFetcher, the snoowrap object ne
 
 Since our goal is to fetch the latest posts, we call on the `getNew` method in `getLatestPosts` and map the fetched submissions to our custom post objects. `getLatestPostsSince` uses the previous method to filter results not older than the time passed as parameter (in seconds). Both these methods are asynchronous because they interact with an external API.
 
-### Posting to Discord
+## Posting to Discord
 
 Now that we can get the latest posts from a given subreddit, we need to post them in our Discord server. We could just format the metadata into a simple message and send it to a channel, but Discord (and its API) offers the ability to post "Embeds" or posts with superpowers. The idea will be to run a function every X seconds, get the latest posts since last time we checked, and then post them.
 
-##### Building embeds
+### Building embeds
 
 Let's create a file to hold our routine and everything it will need to run. I already included the imports we will need later.
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 import { Client, RichEmbed, TextChannel } from 'discord.js';
 
 import { RedditPost } from '../reddit/RedditPost';
@@ -141,11 +140,11 @@ const buildEmbed = (post: RedditPost): RichEmbed => {
 
 This method will return a `RichEmbed` object than we can directly post to a Discord text channel, pretty convenient isn't it?
 
-##### Posting the embeds
+### Posting the embeds
 
 This is where we interact with Discord by adding the following methods:
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 const findDiscordChannels = (
   client: Client,
   channelIds: string[]
@@ -181,11 +180,11 @@ const postEmbed = async (
 
 The `postEmbed` method takes a list of Discord channel IDs and tries to post to those channels. We catch any potential error (channel not found or not text, unauthorize...) to avoid having the bot crash. It's as simple as iterating through the array, mapping the IDs with `TextChannel` objects and using each of them to send the previously built embed.
 
-##### Wrapping up the routine
+### Wrapping up the routine
 
 Let's now put things together. We will first add a small method that fetches the posts and handles the potential errors.
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 const fetchPosts = async (
   subreddit: string,
   delaySeconds: number
@@ -204,7 +203,7 @@ const fetchPosts = async (
 
 And then, the final method to will executes our process regularly:
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 export const startFetchAndPostRoutine = async (
   delaySeconds: number,
   subreddit: string,
@@ -227,7 +226,7 @@ It is pretty straightforward: fetch posts, then for each post, transfer them to 
 
 To start this routine, all we need to do is import `startFetchAndPostRoutine` in our `DiscordBot.ts` and change the `setReadyHandler` as follows:
 
-```typescript:title=src/DiscordBot.ts
+```typescript title=src/DiscordBot.ts
 export const startFetchAndPostRoutine = async (
   private setReadyHandler(): void {
     this.client.on('ready', async () => {
@@ -242,15 +241,15 @@ export const startFetchAndPostRoutine = async (
 
 And that's it; every 30 seconds, posts will be fetched from the given subreddit (here 'r/zoemains') and posted to the channels we set in the routine.
 
-### Bonus: posting to Twitter
+## Bonus: posting to Twitter
 
 I was asked by a friend running the Discord server if the bot could also post the messages on the community's Twitter account. I decided to add that feature to the routine.
 
-##### Interacting with Twitter
+### Interacting with Twitter
 
 To interact with Twitter, i used the [twitter package](https://www.npmjs.com/package/twitter). Just run `yarn add twitter` then `yarn add -D @types/twitter` to add it to the project. Head over to [developer.twitter.com](https://developer.twitter.com/), create your account and do everything required to create an app and get API keys. Here is how we interact with Twitter with our own `TwitterPoster`:
 
-```typescript:title=src/twitter/TwitterPoster.ts
+```typescript title=src/twitter/TwitterPoster.ts
 import Twitter from 'twitter';
 
 export class TwitterPoster {
@@ -281,11 +280,11 @@ export class TwitterPoster {
 
 As usual, we put our API keys in the `.env` file.
 
-##### Adding functionality to the routine
+### Adding functionality to the routine
 
 Finally, back in our routine, following the same schema, we first build our tweets with this method:
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 const buildTweet = (post: RedditPost): string => {
   const title =
     post.title.length < 100 ? post.title : `${post.title.substring(0, 100)}...`;
@@ -298,7 +297,7 @@ const buildTweet = (post: RedditPost): string => {
 Feel free to customize your own post to your needs, do not forget to add some hashtags for visiblity on Twitter.
 We then define how to post on Twitter with a similar method:
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 import { TwitterPoster } from '../twitter/TwitterPoster';
 
 // ...
@@ -317,7 +316,7 @@ const postTweet = async (post: RedditPost): Promise<void> => {
 
 We make sure the method is asyncrhonous and handles errors properly, before adding it to the routine itself:
 
-```typescript:title=src/routines/fetchAndPost.routine.ts
+```typescript title=src/routines/fetchAndPost.routine.ts
 export const startFetchAndPostRoutine = async (
   delaySeconds: number,
   subreddit: string,
@@ -341,4 +340,4 @@ And voilà! Our Discord bot will now not only post the recent submissions from r
 
 ---
 
-_All this code is part of my ZoeBot3 project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/zoebot3) or in the [Projects section](https://praz.dev/projects). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_
+_All this code is part of my ZoeBot3 project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/zoebot3). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_

@@ -15,15 +15,15 @@ In this post, we will build a very simple REST API with 3 routes :
 
 Users will be stored in a MongoDB database, I assume you have basic knowledge of MongoDB and know how to create a database and connect to it. I personnaly use [MongoDB Cloud](https://www.mongodb.com/cloud).
 
-### Creating a Nest project and connecting a database
+## Creating a Nest project and connecting a database
 
 The NestJs ecosystem provides us with an amazing CLI that we will use a lot while working with Nest. To install it, simply run `yarn global add @nestjs/cli` and it should be installed globally, check it by running `nest -v`.
 
-##### Creating the project
+### Creating the project
 
 To create a Nest project, we create a directory to work in, and from that directory, we run the command `nest new .`. We then choose `Yarn` as our package manager (or npm if it's your personal preference). And the CLI will automagically bootstrap us a functionnal Nest project. To start the dev server, we just need to run `yarn start:dev`. The dev server works on watch mode, so saving a file will automatically reload the server with our latest changes. By default, the server listens to port 3000, feel free to change it in the `src/main.ts` file. For now, we only have the main App module, which contains a service `app.service.ts` and a controller `app.controller.ts`.
 
-##### Creating an auth module
+### Creating an auth module
 
 As mentioned earlier, the CLI is used a lot with NestJs. To add components to our server, we use the `generate` command, simplified `g`. So to add our new auth module, we simply run `nest g mo` : our new module appears in an `auth` folder and is also imported in the App module.
 A module can contain :
@@ -35,7 +35,7 @@ A module can contain :
 
 They are defined in the decorator `@Module` as an object containing arrays.
 
-##### Connecting our server to the database
+### Connecting our server to the database
 
 We will connect to our MongoDB database using Mongoose and the connect string. As we always do, for security reasons, we will save our connection string in the environment variables. The equivalent of `dotenv` in Nest is the `Config` module. We simply add it by running `yarn add @nest/config`. Then we create our `.env` file at the root of the project and paste in the connection string with the key `MONGO_URI`.
 
@@ -108,11 +108,11 @@ export const UserSchema = new mongoose.Schema({
 
 Even if you're not familiar with MongoDB and Mongoose, this schema is really simple: a user will be defined by his username and his password. We want to keep the username unique so we have to specify that. And we now have a fully functionnal NestJs server connected to a MongoDB database with a working User schema. Now, let's use that schema and allow new users to get into our app.
 
-### Signin & signup
+## Signin & signup
 
 We now want our users to be able to create their account and use it to access protected routes. First things first, we will start with the signup, which should be the easiest part.
 
-##### Signup
+### Signup
 
 To sign-up (and later sign-in), we will request a user to input a username and a password. And we want to validate the inputs so that it matches conditions :
 
@@ -208,7 +208,7 @@ export class AuthController {
 
 We added the service to the controller thanks to Dependecy Injection through the constructor. We get the credentials from the request body with the decorator `@Body`, adding the `ValidationPipe` parameter runs the verifications we added in the DTO earlier, if it's rejected, the server returns a 400. If the user already exists, the server returns a 409 (conflict) with the message we defined in the service. And that's it, users can now register on the server! We can try running the server and use Postman to make a post request to `localhost:3000/auth/signup` with a username and password in the body (use the x-www-form-urlencoded mode), you should get a 200 and have a new user in your User document collection.
 
-##### Signin
+### Signin
 
 We want our users to be able to access protected routes. For this we'll use JWT or JSON Web Token. Users will post to a route with their username and password, and get a token if they input valid credentials. To do so, we use the `PassportJs` library and its Local strategy. If you're not familiar with PassportJs, i highly recommend reading the [documentation](http://www.passportjs.org/docs/). We will install all the dependencies related to Passport including some we will need later. We run `yarn add @nestjs/jwt @nestjs/passport passport passport-jwt passport-local` and `yarn add -D @types/passport-jwt @types/passport-local` for the types.
 
@@ -376,7 +376,7 @@ export class AuthController {
 
 And here we are! We now have a route to request a valid accessToken with valid credentials. We can now protect routes by requesting a token.
 
-##### Protecting a route
+### Protecting a route
 
 The signin route is actually a route guarded by credentials validation. Any other protected route will just be a route guarded by jwt validation. That simple means we will create a new strategy based on jwt and its matching guard to protect our routes.
 Let's start by creating the Passport strategy to use Jwt. We already imported it in the Auth module earlier.
@@ -471,4 +471,4 @@ That sums up my take on JWT-based authentication for APIs built with NestJs. Tha
 
 ---
 
-_All this code is part of my FoxFam League project. You can find more infos on the [GitHub repo](https://github.com/prazdevs/foxfam-league) or in the [Projects section](https://praz.dev/projects). If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_
+_If you encounter any issue, or have any question, let me know, I'd be more than happy to help!_
