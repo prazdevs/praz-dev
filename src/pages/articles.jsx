@@ -8,7 +8,6 @@ import { graphql } from 'gatsby'
 
 const ArticlesPage = ({ data }) => {
   const { primary } = useColors()
-  console.log(data.articles)
 
   const articles = data.articles.nodes.map(node => ({
     ...node.frontmatter,
@@ -32,7 +31,7 @@ const ArticlesPage = ({ data }) => {
         >
           Articles
         </Heading>
-        <Text mb={8} fontSize='lg' fontWeigh='500'>
+        <Text mb={8} fontSize='lg' fontWeight='500'>
           You will find here posts about problems I encountered and solutions I
           found, as well as discoveries I made and thought were interesting to
           talk about.

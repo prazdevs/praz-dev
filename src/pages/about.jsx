@@ -6,7 +6,6 @@ import { Heading, Text } from '@chakra-ui/core'
 
 const AboutPage = ({ data }) => {
   const { primary } = useColors()
-  console.log(data)
   return (
     <Layout>
       <SEO title='About' />

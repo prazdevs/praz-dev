@@ -26,6 +26,7 @@
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-remark-images": "^3.4.1",
     "gatsby-remark-reading-time": "^1.1.0",
+    "gatsby-remark-unwrap-images": "^1.0.2",
     "gatsby-source-filesystem": "^2.3.35",
     "gatsby-transformer-sharp": "^2.5.19",
     "prism-react-renderer": "^1.1.1",
@@ -33,6 +34,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "remark-unwrap-images": "^2.0.0",
     "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {

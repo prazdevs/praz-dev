@@ -2,19 +2,25 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 import lightTheme from 'prism-react-renderer/themes/nightOwlLight'
 import darkTheme from 'prism-react-renderer/themes/nightOwl'
 import {
-  useColorMode,
   useColorModeValue,
   Heading,
   Text,
   VisuallyHidden,
-  css,
   Flex,
-  Box
+  List,
+  ListItem,
+  OrderedList,
+  Code,
+  Link,
+  Image
 } from '@chakra-ui/core'
 import useColors from '../hooks/useColors'
+import { Link as GatsbyLink } from 'gatsby'
 
 const Pre = props => {
   const theme = useColorModeValue(lightTheme, darkTheme)
+  const border = useColorModeValue('2px', '0px')
+  const titleBg = useColorModeValue('gray.200', 'gray.700')
   const className = props.children.props.className || ''
   const title = props.children.props.title || ''
   const matches = className.match(/language-(?<lang>.*)/)
@@ -35,12 +41,27 @@ const Pre = props => {
           className={className}
           style={{
             ...style,
-            padding: '20px',
+            padding: '1.5rem',
             whiteSpace: 'pre-wrap',
-            fontFamily: 'Jetbrains Mono'
+            fontFamily: 'Jetbrains Mono',
+            marginTop: '0.75rem',
+            marginBottom: '0.75rem',
+            borderRadius: '20px',
+            borderWidth: border
           }}
         >
-          <span>{title}</span>
+          <Text
+            mx={2}
+            mt='-1.5rem'
+            width='fit-content'
+            mb='1.5rem'
+            backgroundColor={titleBg}
+            maxW='fill-available'
+            px={2}
+            borderBottomRadius={5}
+          >
+            {title}
+          </Text>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -108,23 +129,45 @@ const H6 = props => (
   />
 )
 
-const Blockquote = props => {
-  const { body } = useColors()
+const Blockquote = props => (
+  <Flex
+    {...props}
+    direction='column'
+    fontFamily='Marck Script'
+    fontSize='2xl'
+    mx={10}
+    my={2}
+    px={2}
+  />
+)
 
+const Cite = props => <Text {...props} as='cite' alignSelf='flex-end' my={2} />
+
+const Ul = props => <List {...props} listStyleType='circle' pl={7} my={2} />
+
+const Ol = props => <OrderedList {...props} pl={7} my={2} />
+
+const Li = props => <ListItem {...props} my={1} />
+
+const InlineCode = props => <Code {...props} />
+
+const A = props => {
+  const { body, primary } = useColors()
   return (
-    <Flex
+    <Link
       {...props}
-      direction='column'
-      fontFamily='Marck Script'
-      fontSize='2xl'
-      mx={10}
-      my={2}
-      px={2}
+      borderBottomWidth='1px'
+      borderBottomColor={body}
+      transition='all 0.15s ease'
+      fontWeight='500'
+      _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
     />
   )
 }
 
-const Cite = props => <Text {...props} as='cite' alignSelf='flex-end' />
+const Img = props => {
+  return <Image {...props} />
+}
 
 export default {
   pre: Pre,
@@ -136,5 +179,11 @@ export default {
   h5: H5,
   h6: H6,
   blockquote: Blockquote,
-  cite: Cite
+  cite: Cite,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+  inlineCode: InlineCode,
+  a: A
+  // img: Img
 }

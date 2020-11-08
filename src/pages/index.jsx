@@ -27,7 +27,6 @@ const SectionHeading = ({ heading }) => {
 }
 
 const IndexPage = ({ data }) => {
-  console.log(data.articles)
   const page = {
     header: data.page.frontmatter.header,
     subheader: data.page.frontmatter.subheader,

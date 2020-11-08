@@ -21,7 +21,7 @@ Our final task in the Discord dashboard is to add the bot to one of our servers.
 
 Discord.JS gives a tiny example of a simple bot. Here is the code:
 
-```javascript:title=src/app.js
+```javascript title=src/app.js
 require('dotenv').config();
 
 const Discord = require('discord.js');
@@ -50,7 +50,7 @@ Discord.JS has the amazing advatage to be built with classes in mind. It comes w
 
 I will assume you have `tsc` installed and know the basics of TypeScript. Since any valid JavaScript is valid TypeScript, we can add our TS dependency with `yarn add -D typescript` and our dotenv types with `yarn add -D @types/dotenv` and change our `app.js` to `app.ts`. We then initialize our tsconfig with `tsc --init` and uncomment the following lines:
 
-```json:title=tsconfig.json
+```json title=tsconfig.json
 {
   "compilerOptions": {
     ...
@@ -63,7 +63,7 @@ I will assume you have `tsc` installed and know the basics of TypeScript. Since 
 
 Then we change the scripts in our `package.json`:
 
-```json:title=package.json
+```json title=package.json
 {
   ...
   "scripts": {
@@ -84,7 +84,7 @@ Since we work with TypeScript, how about using the **Singleton design pattern** 
 - a `static instance` referencing our single insance of the class.
 - a `getInstance` method to get the instance of the class. It follows a lazy evaluation strategy, so it creates the instance when called for the first time.
 
-```typescript:title=src/app.ts
+```typescript title=src/app.ts
 import { DiscordBot } from './DiscordBot';
 
 require('dotenv').config();
@@ -94,7 +94,7 @@ const bot = DiscordBot.getInstance();
 bot.connect();
 ```
 
-```typescript:title=src/DiscordBot.ts
+```typescript title=src/DiscordBot.ts
 import { Client } from 'discord.js';
 
 export class DiscordBot {
@@ -160,7 +160,7 @@ There are many ways to deploy a NodeJS application. I like Heroku because it is 
 
 We built a bot, which is an application that will be running all the time, listening to events we asked it to. We need to tell Heroku our application will be using a "Worker" dyno type and which script it should run on start. We just add a file named `Procfile` at the root of the project container the script.
 
-```yaml:title=Procfile
+```yaml title=Procfile
 worker: yarn start
 ```
 

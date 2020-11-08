@@ -70,6 +70,7 @@ const Header = () => {
       left='0'
       right='0'
       w='full'
+      zIndex={1}
       borderBottomWidth='1px'
       fontFamily='Montserrat'
       backgroundColor={colorMode === 'light' ? 'white' : 'gray.800'}

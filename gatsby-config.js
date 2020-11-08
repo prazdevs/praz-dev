@@ -20,7 +20,9 @@ module.exports = {
       options: {
         // maxWidth: 800,
         backgroundColor: `transparent`,
-        showCaptions: true
+        showCaptions: true,
+        linkImagesToOriginal: false,
+        wrapperStyle: `text-align: center; font-style: italic;`
       }
     },
     {
@@ -33,7 +35,11 @@ module.exports = {
             options: {
               // maxWidth: 800,
               backgroundColor: `transparent`,
-              showCaptions: true
+              showCaptions: true,
+              linkImagesToOriginal: false,
+              wrapperStyle: `text-align: center;
+                font-style: italic;
+                margin: 0.75rem`
             }
           }
         ]
