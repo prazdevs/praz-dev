@@ -11,7 +11,7 @@ import MdxComponents from '../components/MdxComponents'
 export default ({ data }) => {
   const { primary } = useColors()
 
-  const article = {
+  const post = {
     title: data.mdx.frontmatter.title,
     date: data.mdx.frontmatter.date,
     readingTime: data.mdx.fields.readingTime.text,
@@ -22,7 +22,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={article.title} />
+      <SEO title={post.title} />
       <Heading
         as='h1'
         fontSize='4xl'
@@ -32,36 +32,36 @@ export default ({ data }) => {
         mt={7}
         mb={3}
       >
-        {article.title}
+        {post.title}
       </Heading>
       <Flex
         margin='auto'
         width={{ base: 'auto', lg: '80%' }}
         pt={2}
-        mb={6}
+        mb={8}
         borderTopWidth='2px'
         borderTopColor={primary}
         justify='space-between'
       >
         <HStack>
           <Icon as={Calendar} boxSize={6} />
-          <Text fontSize='lg'>{article.date}</Text>
+          <Text fontSize='lg'>{post.date}</Text>
         </HStack>
         <HStack>
           <Icon as={Watch} boxSize={6} />
-          <Text fontSize='lg'>{article.readingTime}</Text>
+          <Text fontSize='lg'>{post.readingTime}</Text>
         </HStack>
       </Flex>
 
       <MDXProvider components={MdxComponents}>
-        <MDXRenderer>{article.body}</MDXRenderer>
+        <MDXRenderer>{post.body}</MDXRenderer>
       </MDXProvider>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query article($id: String) {
+  query post($id: String) {
     mdx(id: { eq: $id }) {
       mdxAST
       body

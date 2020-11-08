@@ -15,13 +15,13 @@ import { Link as GatsbyLink } from 'gatsby'
 import useColors from '../hooks/useColors'
 import TechTag from './TechTag'
 
-const ArticleList = ({ articles, isCondensed }) => {
+const PostList = ({ posts, isCondensed }) => {
   const { primary, body } = useColors()
 
   return (
-    <Stack direction='column' divider={<StackDivider />}>
-      {articles.map(article => (
-        <Stack key={article.title} direction='column'>
+    <Stack direction='column' divider={<StackDivider />} spacing={4}>
+      {posts.map(post => (
+        <Stack key={post.title} direction='column' spacing={3}>
           <Heading
             as={isCondensed ? 'h3' : 'h2'}
             fontSize='xl'
@@ -30,34 +30,35 @@ const ArticleList = ({ articles, isCondensed }) => {
           >
             <Link
               as={GatsbyLink}
-              to={article.link}
+              to={post.link}
               borderBottomWidth='1px'
               borderBottomColor={body}
               transition='all 0.15s ease'
               _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
             >
-              {article.title}
+              {post.title}
             </Link>
           </Heading>
 
-          <HStack>
+          <HStack fontWeight='500'>
             <Icon as={Calendar} boxSize={5} />
-            <Text mr={2}>{article.date}</Text>
+            <Text mr={2}>{post.date}</Text>
             <Icon as={Watch} boxSize={5} />
-            <Text>{article.readingTime}</Text>
+            <Text>{post.readingTime}</Text>
           </HStack>
           {isCondensed ? null : (
-            <Wrap mb={3}>
-              {article.tags.map(tag => (
+            <Wrap>
+              {post.tags.map(tag => (
                 <WrapItem key={tag}>
                   <TechTag tech={tag} />
                 </WrapItem>
               ))}
             </Wrap>
           )}
+          <Text>{post.excerpt}</Text>
         </Stack>
       ))}
     </Stack>
   )
 }
-export default ArticleList
+export default PostList

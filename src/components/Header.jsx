@@ -48,7 +48,7 @@ const NavLinks = ({ spacing, direction }) => (
   <Stack as={List} direction={direction} align='center' spacing={spacing}>
     {[
       { link: '/', label: 'home' },
-      { link: '/articles', label: 'articles' },
+      { link: '/posts', label: 'posts' },
       { link: '/about', label: 'about' }
     ].map(({ label, link }) => (
       <ListItem key={label}>

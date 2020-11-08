@@ -1,11 +1,12 @@
-import { Flex, Heading, Stack, Text, Box } from '@chakra-ui/core'
+import { Flex, Heading, Stack, Text, Box, Icon, Link } from '@chakra-ui/core'
 import Img from 'gatsby-image'
-import { graphql } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
+import { RightArrow } from 'emotion-icons/boxicons-regular'
 
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
-import ArticleList from '../components/ArticleList'
+import PostList from '../components/PostList'
 import ProjectList from '../components/ProjectList'
 
 const SectionHeading = ({ heading }) => {
@@ -32,11 +33,12 @@ const IndexPage = ({ data }) => {
     subheader: data.page.frontmatter.subheader,
     photo: data.page.frontmatter.photo.childImageSharp.fixed
   }
-  const articles = data.articles.nodes.map(node => ({
+  const posts = data.posts.nodes.map(node => ({
     title: node.frontmatter.title,
     date: node.frontmatter.date,
     link: node.fields.slug,
-    readingTime: node.fields.readingTime.text
+    readingTime: node.fields.readingTime.text,
+    excerpt: node.excerpt
   }))
   const projects = data.projects.nodes.map(node => ({
     title: node.frontmatter.title,
@@ -46,7 +48,7 @@ const IndexPage = ({ data }) => {
     thumbnail: node.frontmatter.thumbnail.childImageSharp.fixed
   }))
 
-  const { primary } = useColors()
+  const { primary, body } = useColors()
 
   return (
     <Layout>
@@ -84,8 +86,23 @@ const IndexPage = ({ data }) => {
           </Stack>
         </Flex>
         <Flex as='section' direction='column'>
-          <SectionHeading heading='Latest articles' />
-          <ArticleList articles={articles} isCondensed />
+          <SectionHeading heading='Latest posts' />
+          <PostList posts={posts} isCondensed />
+          <Text alignSelf={{ base: 'center', sm: 'flex-end' }} mt={6} mb={2}>
+            <Link
+              as={GatsbyLink}
+              to='posts'
+              fontSize='xl'
+              fontWeight='400'
+              borderBottomWidth='1px'
+              borderBottomColor={body}
+              transition='all 0.15s ease'
+              _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
+            >
+              see all posts
+              {/* <Icon as={RightArrow} ml={2} /> */}
+            </Link>
+          </Text>
         </Flex>
         <Flex as='section' direction='column'>
           <SectionHeading heading='Projects' />
@@ -98,12 +115,13 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    articles: allMdx(
+    posts: allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/articles/" } }
-      limit: 5
+      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
+      limit: 3
     ) {
       nodes {
+        excerpt
         fields {
           slug
           readingTime {

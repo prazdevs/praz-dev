@@ -20,9 +20,8 @@ module.exports = {
       options: {
         // maxWidth: 800,
         backgroundColor: `transparent`,
-        showCaptions: true,
         linkImagesToOriginal: false,
-        wrapperStyle: `text-align: center; font-style: italic;`
+        wrapperStyle: `margin-top: 0.75rem; margin-bottom: 0.75rem;`
       }
     },
     {
@@ -35,17 +34,13 @@ module.exports = {
             options: {
               // maxWidth: 800,
               backgroundColor: `transparent`,
-              showCaptions: true,
               linkImagesToOriginal: false,
-              wrapperStyle: `text-align: center;
-                font-style: italic;
-                margin: 0.75rem`
+              wrapperStyle: `margin-top: 0.75rem; margin-bottom: 0.75rem;`
             }
           }
         ]
       }
     },
-
     `gatsby-plugin-chakra-ui`,
     `gatsby-remark-reading-time`,
     {

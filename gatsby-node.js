@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/content/articles/" } }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/content/posts/" } }) {
         edges {
           node {
             id
@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/article.jsx`),
+      component: path.resolve(`./src/templates/post.jsx`),
       context: { id: node.id }
     })
   })

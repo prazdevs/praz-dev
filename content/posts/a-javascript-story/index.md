@@ -3,9 +3,8 @@ title: From hate to love, a Javascript story
 category: blog
 date: 2019-12-21
 tags: [storytime, javascript]
-description: 
+description:
 ---
-
 My mother used to tell me: "only fools never change their mind". Well, mother knows best, because I did it. Let's be honest here, who never made fun of JavaScript among the developers community? No one. There are so many funny jokes and memes about JavaScript, and most of them are part if not completely true. How did I miss out for so long on the world's most used language?
 
 > "JavaScript is the world's most misunderstood programming language."  
@@ -17,7 +16,7 @@ This was probably my mistake, and a lot of others' as well. I was still learning
 
 JavaScript is an old language, and you can't deny that, its first release dates back to 1995. I had my first contact with JavaScript during its jQuery era, so roughly 11 years after its release. As far as I know, it was a revolution and allowed interactivity in our websites.
 
-![Wikipedia in 2005, the memories of boring content...](wikipedia-in-2005.jpg)
+![An 2005 wikipedia static page](wikipedia-in-2005.jpg)
 
 And I surely remember the web slowly evolving from boring text & image pages to more dynamic & interactive pages.
 
@@ -25,7 +24,7 @@ And I surely remember the web slowly evolving from boring text & image pages to 
 
 I learnt programming with Object Oriented and statically typed languages (read Java). I naturally got used to typing everything, and working in a strongly typed environment: I knew what every variable was and what I could expect from any function, and that felt great.
 
-![Languages and typing](typed-languages.png)
+![A graph sorting languages by typing, weak to strong and dynamic to static](typed-languages.png)
 
 Naturally, the first time I read JavaScript code, I panicked: "Where are the types?". It was literally impossible for me at that moment to consider a language that would not declare the types it was using. I needed the safety (or at least the feeling of it) of typed variables.
 
@@ -46,27 +45,27 @@ I took those from the talk ["Wat", given by Gary Bernhardt at CodeMash 2012](htt
 In the end, what kept me away from JavaScript for so long would probably be the biased opinion I had, and my completely outdated vision of it. No further than in 2019, I was still thinking JavaScript was that clunky language people use to animate their website. When I heard the name JavaScript, this is the kind of code that would have come through my mind:
 
 ```js title=scary-callbacks.js
-const verifyUser = function(username, password, callback) {
+const verifyUser = function (username, password, callback) {
   dataBase.verifyUser(username, password, (error, userInfo) => {
     if (error) {
-      callback(error);
+      callback(error)
     } else {
       dataBase.getRoles(username, (error, roles) => {
         if (error) {
-          callback(error);
+          callback(error)
         } else {
           dataBase.logAccess(username, error => {
             if (error) {
-              callback(error);
+              callback(error)
             } else {
-              callback(null, userInfo, roles);
+              callback(null, userInfo, roles)
             }
-          });
+          })
         }
-      });
+      })
     }
-  });
-};
+  })
+}
 ```
 
 Scary, isn't it ? Well to me it was, and it still is. My error was thinking JavaScript was still stuck at this point...
@@ -83,7 +82,7 @@ That. Was. Hard. I mean, overwhelming. Opening a complex, probably not perfectly
 
 While reading about Vue, I came across numerous references about a "framework" or "library" called React. Compared to the others, it often came out as "more mature" and "more popular". Without thinking twice, I was already crawling through YouTube for some React knowledge, and I sure wasn't disappointed. The amount of complete but free resources is incredible. Going with the flow (pun slightly intended for whoever gets it), I followed up by implementing simple Redux stores to my app, and learnt by building a dummy ecommerce application. And it felt good, satisfying even. Because I enjoy well designed architecture, I had a great time implenting those as if they were puzzle pieces that I put together.
 
-![React + Redux architecture, delightful...](react-architecture.png)
+![A diagram depicting the React + Redux architecture](react-architecture.png)
 
 React provided principles to abide by (see [thinking in React](https://reactjs.org/docs/thinking-in-react.html)) while Redux provided me with opinionated and "safe" ways to handle requests and data in my application, how convenient! I will not go through everything I learnt, because React is so complex, but it is still constantly evolving and growing and it definitely made me love JavaScript. Yes, you read that right.
 
@@ -94,13 +93,13 @@ I just witnessed modern JavaScript power, and I was impressed. As someone with a
 ```js title=express-server.js
 // from expressjs.com
 
-const express = require('express');
-const app = express();
-const port = 3000;
+const express = require('express')
+const app = express()
+const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 ```
 
 Yup, that's 5 lines to run a web server. And as I dug deeper into Express, I realised the infinite possibilities and how evolutive it is. I built a small app backend, used external APIs (such as Riot Games') and also worked with MongoDB. Everything was fast and efficient and felt satisfying. The `async/await` syntax made my fear of callback hells nothing but a bad memory. I was still missing something; types.

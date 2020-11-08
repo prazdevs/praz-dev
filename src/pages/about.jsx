@@ -24,9 +24,9 @@ const AboutPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    articles: allMdx(
+    posts: allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/articles/" } }
+      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
       limit: 5
     ) {
       nodes {

@@ -156,6 +156,9 @@ const A = props => {
   return (
     <Link
       {...props}
+      isExternal
+      target='_blank'
+      rel='noopener noreferrer'
       borderBottomWidth='1px'
       borderBottomColor={body}
       transition='all 0.15s ease'
@@ -166,7 +169,7 @@ const A = props => {
 }
 
 const Img = props => {
-  return <Image {...props} />
+  return <Image {...props} my={6} />
 }
 
 export default {
@@ -184,6 +187,6 @@ export default {
   ol: Ol,
   li: Li,
   inlineCode: InlineCode,
-  a: A
-  // img: Img
+  a: A,
+  img: Img
 }
