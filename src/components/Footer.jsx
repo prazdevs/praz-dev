@@ -1,4 +1,11 @@
-import { HStack, VStack, Text, Link, Icon } from '@chakra-ui/core'
+import {
+  HStack,
+  VStack,
+  Text,
+  Link,
+  Icon,
+  VisuallyHidden
+} from '@chakra-ui/core'
 import useColors from '../hooks/useColors'
 import { Twitter, Linkedin, Github } from 'emotion-icons/simple-icons'
 
@@ -29,7 +36,8 @@ const SocialLink = ({ link, icon, label }) => {
       rel='noopener noreferrer'
       _hover={{ color: primary }}
     >
-      <Icon aria-label={label} boxSize={8} as={icon} />
+      <Icon boxSize={8} as={icon} />
+      <VisuallyHidden>{label}</VisuallyHidden>
     </Link>
   )
 }
