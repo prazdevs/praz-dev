@@ -2,7 +2,7 @@
   "name": "praz.dev",
   "private": true,
   "description": "Personal devblog built with Gatsby.",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "author": "Sacha 'PraZ' Bouillez <sachabouillez@gmail.com>",
   "dependencies": {
     "@chakra-ui/core": "^1.0.0-rc.8",
@@ -24,6 +24,7 @@
     "gatsby-plugin-offline": "^3.2.37",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-sharp": "^2.6.43",
+    "gatsby-plugin-sitemap": "^2.5.1",
     "gatsby-remark-images": "^3.4.1",
     "gatsby-remark-reading-time": "^1.1.0",
     "gatsby-remark-unwrap-images": "^1.0.2",

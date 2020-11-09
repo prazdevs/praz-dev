@@ -15,7 +15,7 @@ const ProjectList = ({ projects }) => {
   return (
     <Stack direction='column' divider={<StackDivider />}>
       {projects.map(project => (
-        <Stack as='article' key={project.title} direction='column'>
+        <Stack key={project.title} direction='column'>
           <Stack direction='row' align='center'>
             <Heading
               as='h3'

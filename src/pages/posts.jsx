@@ -25,7 +25,7 @@ const PostsPage = ({ data }) => {
           fontFamily='Montserrat'
           fontWeight='700'
           mr='auto'
-          mt={7}
+          mt={{ base: 4, sm: 7 }}
           mb={4}
           borderBottomColor={primary}
           borderBottomWidth='2px'

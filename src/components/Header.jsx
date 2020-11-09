@@ -48,7 +48,7 @@ const NavLinks = ({ spacing, direction }) => (
   <Stack as={List} direction={direction} align='center' spacing={spacing}>
     {[
       { link: '/', label: 'home' },
-      { link: '/posts', label: 'posts' },
+      { link: '/posts', label: 'posts' }
       // { link: '/about', label: 'about' }
     ].map(({ label, link }) => (
       <ListItem key={label}>
@@ -93,6 +93,7 @@ const Header = () => {
             <ThemeButton />
           </Stack>
           <IconButton
+            aria-label='open menu'
             onClick={onOpen}
             d={{ base: 'flex', sm: 'none' }}
             variant='outline'

@@ -55,7 +55,7 @@ const IndexPage = ({ data }) => {
       <Stack spacing={12}>
         <Flex
           direction={{ base: 'column', sm: 'row' }}
-          mt={7}
+          mt={{ base: 4, sm: 7 }}
           align='center'
           justify='center'
         >
