@@ -39,6 +39,7 @@ const Pre = props => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
           className={className}
+          data-language='html'
           style={{
             ...style,
             padding: '1.5rem',
@@ -50,25 +51,27 @@ const Pre = props => {
             borderWidth: border
           }}
         >
-          <Text
-            mx={2}
-            mt='-1.5rem'
-            width='fit-content'
-            mb='1.5rem'
-            backgroundColor={titleBg}
-            maxW='fill-available'
-            px={2}
-            borderBottomRadius={5}
-          >
-            {title}
-          </Text>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
+          <code>
+            <Text
+              mx={2}
+              mt='-1.5rem'
+              width='fit-content'
+              mb='1.5rem'
+              backgroundColor={titleBg}
+              maxW='fill-available'
+              px={2}
+              borderBottomRadius={5}
+            >
+              {title}
+            </Text>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </code>
         </pre>
       )}
     </Highlight>
