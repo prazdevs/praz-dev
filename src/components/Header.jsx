@@ -83,6 +83,8 @@ const Header = () => {
               boxSize={8}
               mr={3}
               color={colorMode === 'light' ? 'red.600' : 'red.300'}
+              aria-hidden='true'
+              focusable='false'
             />
             <Text>praz.dev</Text>
           </Flex>
