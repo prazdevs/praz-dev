@@ -16,6 +16,8 @@ const PostsPage = ({ data }) => {
     readingTime: node.fields.readingTime.text
   }))
 
+  const { header, subheader } = data.page.frontmatter
+
   return (
     <Layout>
       <SEO title='Posts' />
@@ -30,12 +32,10 @@ const PostsPage = ({ data }) => {
           borderBottomColor={primary}
           borderBottomWidth='2px'
         >
-          Posts
+          {header}
         </Heading>
         <Text mb={8} fontSize='lg' fontWeight='500'>
-          You will find here posts about problems I encountered and solutions I
-          found, as well as discoveries I made and thought were interesting to
-          talk about.
+          {subheader}
         </Text>
         <PostList posts={posts} />
       </Flex>
@@ -62,6 +62,12 @@ export const query = graphql`
           title
           tags
         }
+      }
+    }
+    page: mdx(fileAbsolutePath: { regex: "/content/pages/posts/" }) {
+      frontmatter {
+        header
+        subheader
       }
     }
   }
