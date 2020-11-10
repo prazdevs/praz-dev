@@ -1,12 +1,12 @@
-import { Box, Flex, Heading, Link, Stack, Text } from '@chakra-ui/core'
-import { Link as GatsbyLink, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { Box, Flex, Heading, Link, Stack, Text } from '@chakra-ui/core';
+import { graphql, Link as GatsbyLink } from 'gatsby';
+import Img from 'gatsby-image';
 
-import Layout from '../components/Layout'
-import PostList from '../components/PostList'
-import ProjectList from '../components/ProjectList'
-import SEO from '../components/Seo'
-import useColors from '../hooks/useColors'
+import Layout from '../components/Layout';
+import PostList from '../components/PostList';
+import ProjectList from '../components/ProjectList';
+import SEO from '../components/Seo';
+import useColors from '../hooks/useColors';
 
 const SectionHeading = ({ heading }) => {
   const { primary } = useColors()
@@ -43,8 +43,7 @@ const IndexPage = ({ data }) => {
     title: node.frontmatter.title,
     description: node.frontmatter.description,
     link: node.frontmatter.link,
-    maintained: node.frontmatter.maintained,
-    thumbnail: node.frontmatter.thumbnail.childImageSharp.fixed
+    maintained: node.frontmatter.maintained
   }))
 
   const { primary, body } = useColors()
@@ -142,13 +141,6 @@ export const query = graphql`
           link
           description
           maintained
-          thumbnail {
-            childImageSharp {
-              fixed(width: 48, height: 48) {
-                ...GatsbyImageSharpFixed_withWebp
-              }
-            }
-          }
         }
       }
     }
