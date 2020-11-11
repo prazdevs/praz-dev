@@ -10,6 +10,7 @@ import {
   Javascript,
   Rust
 } from 'emotion-icons/simple-icons'
+import { Accessibility } from 'emotion-icons/icomoon'
 import { Coffee } from 'emotion-icons/zondicons'
 
 const tagValues = tech => {
@@ -73,6 +74,12 @@ const tagValues = tech => {
         label: 'Storytime',
         color: 'pink',
         icon: Coffee
+      }
+    case 'a11y':
+      return {
+        label: 'Accessibility',
+        color: 'orange',
+        icon: Accessibility
       }
     default:
       return { label: tech, color: undefined, icon: null }
