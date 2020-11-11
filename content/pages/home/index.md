@@ -1,5 +1,5 @@
 ---
 header: Hey, I'm Sacha.
-subheader: Pragmatic frontend developer, React nerd and a11y advocate.
+subheader: Pragmatic frontend developer, avid learner and React nerd.
 photo: ./sacha.png
 ---
