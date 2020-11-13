@@ -1373,13 +1373,6 @@
     "@chakra-ui/system" "1.0.0-rc.8"
     "@chakra-ui/utils" "1.0.0-rc.8"
 
-"@chakra-ui/skip-nav@^1.0.0-rc.8":
-  version "1.0.0-rc.8"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/skip-nav/-/skip-nav-1.0.0-rc.8.tgz#14c761f5325c04241b97453a29dc10dc3e8723e3"
-  integrity sha512-fcrjCITP1MzC05vpNXzFPb6f6wnGQEYGeYu5+5VHuIp5lbX07aqBV7uAanj4Kzhjn/NOKfQZelUPCTia9vv36w==
-  dependencies:
-    "@chakra-ui/utils" "1.0.0-rc.8"
-
 "@chakra-ui/slider@1.0.0-rc.8":
   version "1.0.0-rc.8"
   resolved "https://registry.yarnpkg.com/@chakra-ui/slider/-/slider-1.0.0-rc.8.tgz#6d47d23a03b429bb1468a3a9de6a3bdb66aea01a"
@@ -1470,7 +1463,7 @@
     "@types/tinycolor2" "1.4.2"
     tinycolor2 "1.4.1"
 
-"@chakra-ui/theme@1.0.0-rc.8", "@chakra-ui/theme@^1.0.0-rc.8":
+"@chakra-ui/theme@1.0.0-rc.8":
   version "1.0.0-rc.8"
   resolved "https://registry.yarnpkg.com/@chakra-ui/theme/-/theme-1.0.0-rc.8.tgz#7033c61f2bbc5984960b38f34d621dea62a7f11d"
   integrity sha512-P7X6j2WqTR2YpqXjX5dAWQ6N9QwB11QOwuPL1V+wQoQVIIcElUm9koibhWPN8oUqDteTPa9lQ+cK79RIJ2bw4w==

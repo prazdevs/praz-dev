@@ -6,8 +6,6 @@
   "author": "Sacha 'PraZ' Bouillez <sachabouillez@gmail.com>",
   "dependencies": {
     "@chakra-ui/core": "^1.0.0-rc.8",
-    "@chakra-ui/skip-nav": "^1.0.0-rc.8",
-    "@chakra-ui/theme": "^1.0.0-rc.8",
     "@icons-pack/react-simple-icons": "^3.13.0",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
