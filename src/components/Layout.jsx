@@ -1,14 +1,12 @@
 import { Container } from '@chakra-ui/react'
 import React from 'react'
 
-import ColorModeFix from './ColorModeFix'
 import Footer from './Footer'
 import Header from './Header'
 
 const Layout = ({ children }) => {
   return (
     <>
-      <ColorModeFix />
       <Header />
       <Container
         as='main'
