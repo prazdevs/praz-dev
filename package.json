@@ -7,8 +7,8 @@
   "dependencies": {
     "@chakra-ui/core": "^1.0.0-rc.8",
     "@icons-pack/react-simple-icons": "^3.13.0",
-    "@mdx-js/mdx": "^1.6.19",
-    "@mdx-js/react": "^1.6.19",
+    "@mdx-js/mdx": "^1.6.21",
+    "@mdx-js/react": "^1.6.21",
     "fontsource-jetbrains-mono": "^3.0.5",
     "fontsource-marck-script": "^3.0.9",
     "fontsource-montserrat": "^3.0.9",
