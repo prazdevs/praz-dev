@@ -5,7 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
-import { Calendar, Watch } from 'emotion-icons/feather'
+import { FiCalendar, FiWatch } from 'react-icons/fi'
 import MdxComponents from '../components/MdxComponents'
 
 export default ({ data }) => {
@@ -42,11 +42,11 @@ export default ({ data }) => {
         justify='space-between'
       >
         <HStack>
-          <Icon as={Calendar} boxSize={6} />
+          <Icon as={FiCalendar} boxSize={6} />
           <Text fontSize='lg'>{post.date}</Text>
         </HStack>
         <HStack>
-          <Icon as={Watch} boxSize={6} />
+          <Icon as={FiWatch} boxSize={6} />
           <Text fontSize='lg'>{post.readingTime}</Text>
         </HStack>
       </Flex>

@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/core'
 
 import { Link as GatsbyLink } from 'gatsby'
-import { Menu as MenuIcon } from 'emotion-icons/boxicons-regular'
+import { BiMenu as MenuIcon } from 'react-icons/bi'
 import { MononokeIcon } from './MononokeIcon'
 import ThemeButton from './ThemeButton'
 import useColors from '../hooks/useColors'

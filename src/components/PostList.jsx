@@ -1,4 +1,5 @@
 import {
+  Heading,
   HStack,
   Icon,
   Link,
@@ -6,11 +7,10 @@ import {
   StackDivider,
   Text,
   Wrap,
-  WrapItem,
-  Heading
+  WrapItem
 } from '@chakra-ui/core'
-import { Calendar, Watch } from 'emotion-icons/feather'
 import { Link as GatsbyLink } from 'gatsby'
+import { FiCalendar, FiWatch } from 'react-icons/fi'
 
 import useColors from '../hooks/useColors'
 import TechTag from './TechTag'
@@ -41,9 +41,9 @@ const PostList = ({ posts, isCondensed }) => {
           </Heading>
 
           <HStack fontWeight='500'>
-            <Icon as={Calendar} boxSize={5} />
+            <Icon as={FiCalendar} boxSize={5} />
             <Text mr={2}>{post.date}</Text>
-            <Icon as={Watch} boxSize={5} />
+            <Icon as={FiWatch} boxSize={5} />
             <Text>{post.readingTime}</Text>
           </HStack>
           {isCondensed ? null : (

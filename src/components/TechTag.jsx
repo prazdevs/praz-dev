@@ -1,17 +1,17 @@
-import { Tag, TagLeftIcon, TagLabel } from '@chakra-ui/core'
+import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/core'
 import {
-  ReactLogo,
-  Redux,
-  Nestjs,
-  Typescript,
-  Mongodb,
-  NodeDotJs,
   Heroku,
   Javascript,
-  Rust
-} from 'emotion-icons/simple-icons'
-import { Accessibility } from 'emotion-icons/icomoon'
-import { Coffee } from 'emotion-icons/zondicons'
+  Mongodb,
+  Nestjs,
+  NodeDotJs,
+  ReactJs,
+  Redux,
+  Rust,
+  Typescript
+} from '@icons-pack/react-simple-icons'
+import { FiCoffee } from 'react-icons/fi'
+import { ImAccessibility } from 'react-icons/im'
 
 const tagValues = tech => {
   switch (tech) {
@@ -19,7 +19,7 @@ const tagValues = tech => {
       return {
         label: 'React',
         color: 'cyan',
-        icon: ReactLogo
+        icon: ReactJs
       }
     case 'redux':
       return {
@@ -73,13 +73,13 @@ const tagValues = tech => {
       return {
         label: 'Storytime',
         color: 'pink',
-        icon: Coffee
+        icon: FiCoffee
       }
     case 'a11y':
       return {
         label: 'Accessibility',
         color: 'orange',
-        icon: Accessibility
+        icon: ImAccessibility
       }
     default:
       return { label: tech, color: undefined, icon: null }

@@ -1,13 +1,14 @@
 import {
   HStack,
-  VStack,
-  Text,
-  Link,
   Icon,
-  VisuallyHidden
+  Link,
+  Text,
+  VisuallyHidden,
+  VStack
 } from '@chakra-ui/core'
+import { Github, Linkedin, Twitter } from '@icons-pack/react-simple-icons'
+
 import useColors from '../hooks/useColors'
-import { Twitter, Linkedin, Github } from 'emotion-icons/simple-icons'
 
 const ExtLink = props => {
   const { body, primary } = useColors()

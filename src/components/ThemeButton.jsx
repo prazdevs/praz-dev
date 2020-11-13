@@ -1,10 +1,10 @@
-import { useColorMode, IconButton, Icon } from '@chakra-ui/core'
-import { Moon, Sunny } from 'emotion-icons/ionicons-outline'
+import { Icon, IconButton, useColorMode } from '@chakra-ui/core'
+import { FiMoon, FiSun } from 'react-icons/fi'
 
 const ThemeButton = () => {
   const { colorMode, toggleColorMode } = useColorMode()
 
-  const icon = colorMode === 'light' ? Moon : Sunny
+  const icon = colorMode === 'light' ? FiMoon : FiSun
   const label = `Switch to ${colorMode === 'light' ? 'dark' : 'light'} theme`
 
   return (
@@ -13,7 +13,7 @@ const ThemeButton = () => {
       aria-label={label}
       variant='outline'
       border='none'
-      icon={<Icon boxSize={{ base: 8, sm: 6 }} as={icon} />}
+      icon={<Icon boxSize={{ base: 7, sm: 5 }} as={icon} />}
     />
   )
 }
