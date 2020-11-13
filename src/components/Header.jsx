@@ -15,13 +15,14 @@ import {
   Text,
   useColorMode,
   useDisclosure
-} from '@chakra-ui/core'
-
+} from '@chakra-ui/react'
 import { Link as GatsbyLink } from 'gatsby'
-import { BiMenu as MenuIcon } from 'react-icons/bi'
+import React from 'react'
+import { FiMenu as MenuIcon } from 'react-icons/fi'
+
+import useColors from '../hooks/useColors'
 import { MononokeIcon } from './MononokeIcon'
 import ThemeButton from './ThemeButton'
-import useColors from '../hooks/useColors'
 
 const NavLink = ({ label, link }) => {
   const { primary } = useColors()

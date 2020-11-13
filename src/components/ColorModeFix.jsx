@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useColorMode } from '@chakra-ui/core'
+import { useColorMode } from '@chakra-ui/react'
 
 const ColorModeFix = () => {
   const { colorMode, toggleColorMode } = useColorMode()

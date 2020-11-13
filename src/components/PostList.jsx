@@ -8,8 +8,9 @@ import {
   Text,
   Wrap,
   WrapItem
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { Link as GatsbyLink } from 'gatsby'
+import React from 'react'
 import { FiCalendar, FiWatch } from 'react-icons/fi'
 
 import useColors from '../hooks/useColors'

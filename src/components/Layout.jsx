@@ -1,4 +1,5 @@
-import { Container } from '@chakra-ui/core'
+import { Container } from '@chakra-ui/react'
+import React from 'react'
 
 import ColorModeFix from './ColorModeFix'
 import Footer from './Footer'

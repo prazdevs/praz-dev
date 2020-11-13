@@ -1,4 +1,4 @@
-import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/core'
+import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react'
 import {
   Heroku,
   Javascript,
@@ -10,6 +10,7 @@ import {
   Rust,
   Typescript
 } from '@icons-pack/react-simple-icons'
+import React from 'react'
 import { FiCoffee } from 'react-icons/fi'
 import { ImAccessibility } from 'react-icons/im'
 

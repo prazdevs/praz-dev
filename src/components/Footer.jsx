@@ -5,8 +5,9 @@ import {
   Text,
   VisuallyHidden,
   VStack
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { Github, Linkedin, Twitter } from '@icons-pack/react-simple-icons'
+import React from 'react'
 
 import useColors from '../hooks/useColors'
 

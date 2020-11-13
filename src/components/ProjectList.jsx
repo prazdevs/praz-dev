@@ -1,11 +1,12 @@
 import {
   Badge,
+  Heading,
   Link,
   Stack,
   StackDivider,
-  Text,
-  Heading
-} from '@chakra-ui/core'
+  Text
+} from '@chakra-ui/react'
+import React from 'react'
 
 import useColors from '../hooks/useColors'
 

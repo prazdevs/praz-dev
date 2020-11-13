@@ -45,7 +45,7 @@ module.exports = {
         ]
       }
     },
-    `gatsby-plugin-chakra-ui`,
+    `@chakra-ui/gatsby-plugin`,
     `gatsby-remark-reading-time`,
     {
       resolve: `gatsby-plugin-manifest`,

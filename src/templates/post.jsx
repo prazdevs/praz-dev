@@ -1,12 +1,14 @@
-import { Heading, Icon, Text, Flex, HStack } from '@chakra-ui/core'
+import { Flex, Heading, HStack, Icon, Text } from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import React from 'react'
+import { FiCalendar, FiWatch } from 'react-icons/fi'
+
 import Layout from '../components/Layout'
+import MdxComponents from '../components/MdxComponents'
 import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
-import { FiCalendar, FiWatch } from 'react-icons/fi'
-import MdxComponents from '../components/MdxComponents'
 
 export default ({ data }) => {
   const { primary } = useColors()

@@ -1,10 +1,11 @@
-import { Flex, Heading, Text } from '@chakra-ui/core'
+import { Flex, Heading, Text } from '@chakra-ui/react'
+import { graphql } from 'gatsby'
+import React from 'react'
 
-import PostList from '../components/PostList'
 import Layout from '../components/Layout'
+import PostList from '../components/PostList'
 import SEO from '../components/Seo'
 import useColors from '../hooks/useColors'
-import { graphql } from 'gatsby'
 
 const PostsPage = ({ data }) => {
   const { primary } = useColors()
