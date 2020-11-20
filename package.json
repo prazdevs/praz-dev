@@ -5,7 +5,6 @@
   "version": "2.0.0",
   "author": "Sacha 'PraZ' Bouillez <sachabouillez@gmail.com>",
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-rc.8",
     "@chakra-ui/gatsby-plugin": "^1.0.0",
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
@@ -19,7 +18,6 @@
     "framer-motion": "^2.9.4",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
-    "gatsby-plugin-chakra-ui": "^1.0.0-rc.8",
     "gatsby-plugin-manifest": "^2.6.0",
     "gatsby-plugin-mdx": "^1.4.0",
     "gatsby-plugin-offline": "^3.4.0",
