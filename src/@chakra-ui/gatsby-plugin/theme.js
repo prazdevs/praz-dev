@@ -14,6 +14,17 @@ const theme = extendTheme({
     mono: 'Jetbrains Mono, Menlo, monospace'
   },
   components: {
+    Button: {
+      baseStyle: props => ({
+        _focus: {
+          outline: 'none',
+          boxShadow: `0 0 0 3px rgba(${mode(
+            '182, 0, 0, 0.8',
+            '255, 135, 135,  0.7'
+          )(props)})`
+        }
+      })
+    },
     Link: {
       baseStyle: props => ({
         transition: 'all 0.15s ease',
@@ -23,6 +34,13 @@ const theme = extendTheme({
           color: mode('brand.light', 'brand.dark')(props),
           borderBottomColor: mode('brand.light', 'brand.dark')(props),
           pb: 1
+        },
+        _focus: {
+          outline: 'none',
+          boxShadow: `0 0 0 3px rgba(${mode(
+            '182, 0, 0, 0.8',
+            '255, 135, 135,  0.6'
+          )(props)})`
         }
       }),
       variants: {
@@ -37,6 +55,6 @@ const theme = extendTheme({
   }
 })
 
-console.log(theme.components.Link)
+console.log(theme.components.Link.baseStyle)
 
 export default theme
