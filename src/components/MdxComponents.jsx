@@ -86,7 +86,6 @@ const H2 = props => (
   <Heading
     {...props}
     as='h2'
-    fontFamily='Montserrat'
     fontSize='3xl'
     fontWeight='600'
     my='0.75em'
@@ -96,7 +95,6 @@ const H3 = props => (
   <Heading
     {...props}
     as='h3'
-    fontFamily='Montserrat'
     fontSize='2xl'
     fontWeight='500'
     my='0.75em'
@@ -106,7 +104,6 @@ const H4 = props => (
   <Heading
     {...props}
     as='h4'
-    fontFamily='Montserrat'
     fontSize='xl'
     fontWeight='normal'
     my='0.75em'
@@ -116,7 +113,6 @@ const H5 = props => (
   <Heading
     {...props}
     as='h5'
-    fontFamily='Montserrat'
     fontSize='lg'
     fontWeight='normal'
     my='0.75em'
@@ -126,7 +122,6 @@ const H6 = props => (
   <Heading
     {...props}
     as='h6'
-    fontFamily='Montserrat'
     fontSize='md'
     fontWeight='normal'
     my='0.75em'

@@ -14,7 +14,6 @@ const SectionHeading = ({ heading }) => {
   return (
     <Heading
       as='h2'
-      fontFamily='Montserrat'
       fontWeight='600'
       fontSize='3xl'
       mr='auto'
@@ -74,7 +73,6 @@ const IndexPage = ({ data }) => {
           <Stack direction='column' align='flex-start' justify='center'>
             <Heading
               as='h1'
-              fontFamily='Montserrat'
               fontWeight='700'
               borderBottomColor={primary}
               borderBottomWidth='2px'

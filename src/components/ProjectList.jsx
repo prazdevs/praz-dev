@@ -21,7 +21,6 @@ const ProjectList = ({ projects }) => {
             <Heading
               as='h3'
               fontSize='xl'
-              fontFamily='Montserrat'
               fontWeight='500'
             >
               <Link

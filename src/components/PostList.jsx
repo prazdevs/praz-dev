@@ -26,7 +26,6 @@ const PostList = ({ posts, isCondensed }) => {
           <Heading
             as={isCondensed ? 'h3' : 'h2'}
             fontSize='xl'
-            fontFamily='Montserrat'
             fontWeight={isCondensed ? '500' : '600'}
           >
             <Link

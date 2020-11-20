@@ -27,7 +27,6 @@ export default ({ data }) => {
         as='h1'
         fontSize='4xl'
         textAlign='center'
-        fontFamily='Montserrat'
         fontWeight='600'
         mt={7}
         mb={3}

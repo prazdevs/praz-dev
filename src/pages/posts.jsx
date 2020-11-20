@@ -25,7 +25,6 @@ const PostsPage = ({ data }) => {
       <Flex direction='column'>
         <Heading
           as='h1'
-          fontFamily='Montserrat'
           fontWeight='700'
           mr='auto'
           mt={{ base: 4, sm: 7 }}

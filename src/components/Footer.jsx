@@ -51,7 +51,6 @@ const Footer = () => {
       w='full'
       spacing={6}
       textAlign='center'
-      fontFamily='Montserrat'
       mt={20}
       mb={2}
     >
