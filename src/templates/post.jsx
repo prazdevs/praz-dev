@@ -1,4 +1,11 @@
-import { Flex, Heading, HStack, Icon, Text } from '@chakra-ui/react'
+import {
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  Text,
+  useColorModeValue
+} from '@chakra-ui/react'
 import { MDXProvider } from '@mdx-js/react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -8,11 +15,8 @@ import { FiCalendar, FiWatch } from 'react-icons/fi'
 import Layout from '../components/Layout'
 import MdxComponents from '../components/MdxComponents'
 import SEO from '../components/Seo'
-import useColors from '../hooks/useColors'
 
 export default ({ data }) => {
-  const { primary } = useColors()
-
   const post = {
     title: data.mdx.frontmatter.title,
     date: data.mdx.frontmatter.date,
@@ -39,7 +43,7 @@ export default ({ data }) => {
         pt={2}
         mb={8}
         borderTopWidth='2px'
-        borderTopColor={primary}
+        borderTopColor={useColorModeValue('brand.light', 'brand.dark')}
         justify='space-between'
       >
         <HStack>

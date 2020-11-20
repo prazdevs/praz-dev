@@ -16,8 +16,6 @@ import darkTheme from 'prism-react-renderer/themes/nightOwl'
 import lightTheme from 'prism-react-renderer/themes/nightOwlLight'
 import React from 'react'
 
-import useColors from '../hooks/useColors'
-
 const Pre = props => {
   const theme = useColorModeValue(lightTheme, darkTheme)
   const border = useColorModeValue('2px', '0px')
@@ -83,49 +81,19 @@ const Paragraph = props => <Text {...props} my={3} fontWeight='400' />
 
 const H1 = props => <VisuallyHidden {...props} />
 const H2 = props => (
-  <Heading
-    {...props}
-    as='h2'
-    fontSize='3xl'
-    fontWeight='600'
-    my='0.75em'
-  />
+  <Heading {...props} as='h2' fontSize='3xl' fontWeight='600' my='0.75em' />
 )
 const H3 = props => (
-  <Heading
-    {...props}
-    as='h3'
-    fontSize='2xl'
-    fontWeight='500'
-    my='0.75em'
-  />
+  <Heading {...props} as='h3' fontSize='2xl' fontWeight='500' my='0.75em' />
 )
 const H4 = props => (
-  <Heading
-    {...props}
-    as='h4'
-    fontSize='xl'
-    fontWeight='normal'
-    my='0.75em'
-  />
+  <Heading {...props} as='h4' fontSize='xl' fontWeight='normal' my='0.75em' />
 )
 const H5 = props => (
-  <Heading
-    {...props}
-    as='h5'
-    fontSize='lg'
-    fontWeight='normal'
-    my='0.75em'
-  />
+  <Heading {...props} as='h5' fontSize='lg' fontWeight='normal' my='0.75em' />
 )
 const H6 = props => (
-  <Heading
-    {...props}
-    as='h6'
-    fontSize='md'
-    fontWeight='normal'
-    my='0.75em'
-  />
+  <Heading {...props} as='h6' fontSize='md' fontWeight='normal' my='0.75em' />
 )
 
 const Blockquote = props => (
@@ -151,18 +119,13 @@ const Li = props => <ListItem {...props} my={1} />
 const InlineCode = props => <Code {...props} />
 
 const A = props => {
-  const { body, primary } = useColors()
   return (
     <Link
       {...props}
       isExternal
       target='_blank'
       rel='noopener noreferrer'
-      borderBottomWidth='1px'
-      borderBottomColor={body}
-      transition='all 0.15s ease'
       fontWeight='500'
-      _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
     />
   )
 }

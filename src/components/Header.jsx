@@ -13,31 +13,25 @@ import {
   ListItem,
   Stack,
   Text,
-  useColorMode,
+  useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react'
 import { Link as GatsbyLink } from 'gatsby'
 import React from 'react'
 import { FiMenu as MenuIcon } from 'react-icons/fi'
 
-import useColors from '../hooks/useColors'
 import { MononokeIcon } from './MononokeIcon'
 import ThemeButton from './ThemeButton'
 
 const NavLink = ({ label, link }) => {
-  const { primary } = useColors()
-
   return (
     <Link
       as={GatsbyLink}
       to={link}
       fontSize={{ base: '2xl', sm: 'xl' }}
-      _hover={{
-        color: primary,
-        textDecor: 'none'
-      }}
+      variant='noUnderline'
       _activeLink={{
-        color: primary
+        color: useColorModeValue('brand.light', 'brand.dark')
       }}
     >
       {label}
@@ -60,7 +54,6 @@ const NavLinks = ({ spacing, direction }) => (
 )
 
 const Header = () => {
-  const { colorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
@@ -73,7 +66,7 @@ const Header = () => {
       w='full'
       zIndex={1}
       borderBottomWidth='1px'
-      backgroundColor={colorMode === 'light' ? 'white' : 'gray.800'}
+      backgroundColor={useColorModeValue('white', 'gray.800')}
       transition='background-color 0.2s'
     >
       <Box h={{ base: '3.5rem', sm: '4.5rem' }} maxW='62em' mx='auto'>
@@ -82,7 +75,7 @@ const Header = () => {
             <MononokeIcon
               boxSize={8}
               mr={3}
-              color={colorMode === 'light' ? 'red.600' : 'red.300'}
+              color={useColorModeValue('red.600', 'red.300')}
               aria-hidden='true'
               focusable='false'
             />

@@ -13,12 +13,9 @@ import { Link as GatsbyLink } from 'gatsby'
 import React from 'react'
 import { FiCalendar, FiWatch } from 'react-icons/fi'
 
-import useColors from '../hooks/useColors'
 import TechTag from './TechTag'
 
 const PostList = ({ posts, isCondensed }) => {
-  const { primary, body } = useColors()
-
   return (
     <Stack direction='column' divider={<StackDivider />} spacing={4}>
       {posts.map(post => (
@@ -28,14 +25,7 @@ const PostList = ({ posts, isCondensed }) => {
             fontSize='xl'
             fontWeight={isCondensed ? '500' : '600'}
           >
-            <Link
-              as={GatsbyLink}
-              to={post.link}
-              borderBottomWidth='1px'
-              borderBottomColor={body}
-              transition='all 0.15s ease'
-              _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
-            >
+            <Link as={GatsbyLink} to={post.link}>
               {post.title}
             </Link>
           </Heading>

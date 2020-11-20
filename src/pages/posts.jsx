@@ -1,15 +1,12 @@
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
 
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import SEO from '../components/Seo'
-import useColors from '../hooks/useColors'
 
 const PostsPage = ({ data }) => {
-  const { primary } = useColors()
-
   const posts = data.posts.nodes.map(node => ({
     ...node.frontmatter,
     excerpt: node.excerpt,
@@ -29,7 +26,7 @@ const PostsPage = ({ data }) => {
           mr='auto'
           mt={{ base: 4, sm: 7 }}
           mb={4}
-          borderBottomColor={primary}
+          borderBottomColor={useColorModeValue('brand.light', 'brand.color')}
           borderBottomWidth='2px'
         >
           {header}

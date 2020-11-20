@@ -9,34 +9,26 @@ import {
 import { Github, Linkedin, Twitter } from '@icons-pack/react-simple-icons'
 import React from 'react'
 
-import useColors from '../hooks/useColors'
-
 const ExtLink = props => {
-  const { body, primary } = useColors()
   return (
     <Link
       {...props}
       isExternal
       target='_blank'
       rel='noopener noreferrer'
-      borderBottomWidth='1px'
-      borderBottomColor={body}
-      transition='all 0.15s ease'
       fontWeight='500'
-      _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
     />
   )
 }
 
 const SocialLink = ({ link, icon, label }) => {
-  const { primary } = useColors()
   return (
     <Link
       href={link}
       isExternal
       target='_blank'
       rel='noopener noreferrer'
-      _hover={{ color: primary }}
+      variant='noUnderline'
     >
       <Icon boxSize={8} as={icon} />
       <VisuallyHidden>{label}</VisuallyHidden>
@@ -46,14 +38,7 @@ const SocialLink = ({ link, icon, label }) => {
 
 const Footer = () => {
   return (
-    <VStack
-      as='footer'
-      w='full'
-      spacing={6}
-      textAlign='center'
-      mt={20}
-      mb={2}
-    >
+    <VStack as='footer' w='full' spacing={6} textAlign='center' mt={20} mb={2}>
       <HStack spacing={7}>
         <SocialLink
           link='https://twitter.com/PrazDevs'

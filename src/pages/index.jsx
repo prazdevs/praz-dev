@@ -1,4 +1,12 @@
-import { Box, Flex, Heading, Link, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Heading,
+  Link,
+  Stack,
+  Text,
+  useColorModeValue
+} from '@chakra-ui/react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
@@ -7,10 +15,8 @@ import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import ProjectList from '../components/ProjectList'
 import SEO from '../components/Seo'
-import useColors from '../hooks/useColors'
 
 const SectionHeading = ({ heading }) => {
-  const { primary } = useColors()
   return (
     <Heading
       as='h2'
@@ -18,7 +24,7 @@ const SectionHeading = ({ heading }) => {
       fontSize='3xl'
       mr='auto'
       mb={4}
-      borderBottomColor={primary}
+      borderBottomColor={useColorModeValue('brand.light', 'brand.dark')}
       borderBottomWidth='2px'
     >
       {heading}
@@ -46,8 +52,6 @@ const IndexPage = ({ data }) => {
     maintained: node.frontmatter.maintained
   }))
 
-  const { primary, body } = useColors()
-
   return (
     <Layout>
       <SEO title='Home' />
@@ -68,13 +72,13 @@ const IndexPage = ({ data }) => {
             borderRadius='full'
             borderWidth='2px'
             borderStyle='solid'
-            borderColor={primary}
+            borderColor={useColorModeValue('brand.light', 'brand.dark')}
           />
           <Stack direction='column' align='flex-start' justify='center'>
             <Heading
               as='h1'
               fontWeight='700'
-              borderBottomColor={primary}
+              borderBottomColor={useColorModeValue('brand.light', 'brand.dark')}
               borderBottomWidth='2px'
             >
               {page.header}
@@ -86,16 +90,7 @@ const IndexPage = ({ data }) => {
           <SectionHeading heading='Latest posts' />
           <PostList posts={posts} isCondensed />
           <Text alignSelf={{ base: 'center', sm: 'flex-end' }} mt={6} mb={2}>
-            <Link
-              as={GatsbyLink}
-              to='posts'
-              fontSize='xl'
-              fontWeight='400'
-              borderBottomWidth='1px'
-              borderBottomColor={body}
-              transition='all 0.15s ease'
-              _hover={{ color: primary, borderBottomColor: primary, pb: 1 }}
-            >
+            <Link as={GatsbyLink} to='posts' fontSize='xl' fontWeight='400'>
               see all posts
             </Link>
           </Text>
