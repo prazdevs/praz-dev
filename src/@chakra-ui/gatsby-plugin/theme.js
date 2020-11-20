@@ -55,6 +55,4 @@ const theme = extendTheme({
   }
 })
 
-console.log(theme.components.Link.baseStyle)
-
 export default theme
