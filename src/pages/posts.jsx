@@ -26,7 +26,7 @@ const PostsPage = ({ data }) => {
           mr='auto'
           mt={{ base: 4, sm: 7 }}
           mb={4}
-          borderBottomColor={useColorModeValue('brand.light', 'brand.color')}
+          borderBottomColor={useColorModeValue('brand.light', 'brand.dark')}
           borderBottomWidth='2px'
         >
           {header}
