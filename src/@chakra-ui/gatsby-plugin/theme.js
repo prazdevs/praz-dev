@@ -14,6 +14,11 @@ const theme = extendTheme({
     mono: 'Jetbrains Mono, Menlo, monospace'
   },
   components: {
+    Heading: {
+      sizes: {
+        xl: { lineHeight: '2.5rem' }
+      }
+    },
     Button: {
       baseStyle: props => ({
         _focus: {
