@@ -22,7 +22,10 @@ const theme = extendTheme({
     Button: {
       baseStyle: props => ({
         _focus: {
-          outline: 'none',
+          outline: 0,
+          boxShadow: 'none'
+        },
+        _focusVisible: {
           boxShadow: `0 0 0 3px rgba(${mode(
             '182, 0, 0, 0.8',
             '255, 135, 135,  0.7'
@@ -36,12 +39,16 @@ const theme = extendTheme({
         borderBottomWidth: '1px',
         borderBottomColor: mode('gray.800', 'white')(props),
         _hover: {
+          textDecoration: 'none',
           color: mode('brand.light', 'brand.dark')(props),
           borderBottomColor: mode('brand.light', 'brand.dark')(props),
           pb: 1
         },
         _focus: {
-          outline: 'none',
+          outline: 0,
+          boxShadow: 'none'
+        },
+        _focusVisible: {
           boxShadow: `0 0 0 3px rgba(${mode(
             '182, 0, 0, 0.8',
             '255, 135, 135,  0.6'

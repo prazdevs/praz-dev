@@ -16,7 +16,7 @@ import Layout from '../components/Layout'
 import MdxComponents from '../components/MdxComponents'
 import SEO from '../components/Seo'
 
-export default ({ data }) => {
+const PostTemplate = ({ data }) => {
   const post = {
     title: data.mdx.frontmatter.title,
     date: data.mdx.frontmatter.date,
@@ -80,3 +80,5 @@ export const query = graphql`
     }
   }
 `
+
+export default PostTemplate

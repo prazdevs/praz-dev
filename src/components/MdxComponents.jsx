@@ -134,7 +134,7 @@ const Img = props => {
   return <Image {...props} my={6} />
 }
 
-export default {
+const mdxComponents = {
   pre: Pre,
   p: Paragraph,
   h1: H1,
@@ -152,3 +152,5 @@ export default {
   a: A,
   img: Img
 }
+
+export default mdxComponents
