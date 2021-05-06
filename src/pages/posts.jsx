@@ -4,7 +4,7 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
-import SEO from '../components/Seo'
+import Seo from '../components/Seo'
 
 const PostsPage = ({ data }) => {
   const posts = data.posts.nodes.map(node => ({
@@ -18,7 +18,7 @@ const PostsPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title='Posts' />
+      <Seo title='Posts' />
       <Flex direction='column'>
         <Heading
           as='h1'

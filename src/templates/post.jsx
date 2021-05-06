@@ -14,7 +14,7 @@ import { FiCalendar, FiWatch } from 'react-icons/fi'
 
 import Layout from '../components/Layout'
 import MdxComponents from '../components/MdxComponents'
-import SEO from '../components/Seo'
+import Seo from '../components/Seo'
 
 const PostTemplate = ({ data }) => {
   const post = {
@@ -26,7 +26,7 @@ const PostTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={post.title} />
+      <Seo title={post.title} />
       <Heading
         as='h1'
         fontSize='4xl'

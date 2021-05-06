@@ -8,13 +8,13 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
 
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import ProjectList from '../components/ProjectList'
-import SEO from '../components/Seo'
+import Seo from '../components/Seo'
 
 const SectionHeading = ({ heading }) => {
   return (
@@ -36,7 +36,7 @@ const IndexPage = ({ data }) => {
   const page = {
     header: data.page.frontmatter.header,
     subheader: data.page.frontmatter.subheader,
-    photo: data.page.frontmatter.photo.childImageSharp.fixed
+    photo: data.page.frontmatter.photo
   }
   const posts = data.posts.nodes.map(node => ({
     title: node.frontmatter.title,
@@ -54,7 +54,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title='Home' />
+      <Seo title='Home' />
       <Stack spacing={12}>
         <Flex
           direction={{ base: 'column', sm: 'row' }}
@@ -63,8 +63,9 @@ const IndexPage = ({ data }) => {
           justify='center'
         >
           <Box
-            as={Img}
-            fixed={page.photo}
+            as={GatsbyImage}
+            image={getImage(page.photo)}
+            alt="photo of Sacha"
             boxSize='7rem'
             mr={{ base: 0, sm: 4 }}
             mb={{ base: 4, sm: 0 }}
@@ -144,9 +145,11 @@ export const query = graphql`
         subheader
         photo {
           childImageSharp {
-            fixed(width: 112, height: 112) {
-              ...GatsbyImageSharpFixed_withWebp
-            }
+            gatsbyImageData(
+              width: 112,
+              height: 112,
+              placeholder: BLURRED
+            )
           }
         }
       }
