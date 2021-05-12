@@ -43,14 +43,13 @@ const Pre = props => {
             ...style,
             padding: '1.5rem',
             whiteSpace: 'pre-wrap',
-            fontFamily: 'Jetbrains Mono',
             marginTop: '0.75rem',
             marginBottom: '0.75rem',
             borderRadius: '20px',
             borderWidth: border
           }}
         >
-          <code>
+          <code style={{ fontFamily: 'Jetbrains Mono' }}>
             <Text
               mx={2}
               mt='-1.5rem'
