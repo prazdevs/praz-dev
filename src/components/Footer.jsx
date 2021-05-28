@@ -51,7 +51,7 @@ const Footer = () => {
           icon={Github}
         />
         <SocialLink
-          link='https://www.linkedin.com/in/sacha-bouillez/'
+          link='https://www.linkedin.com/in/sachabouillez/'
           label="Sacha's Linkedin profile"
           icon={Linkedin}
         />
