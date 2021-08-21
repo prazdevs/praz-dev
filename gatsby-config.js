@@ -60,6 +60,5 @@ module.exports = {
         icon: `static/images/icon.png`
       }
     }
-  ],
-  flags: { PRESERVE_WEBPACK_CACHE: true }
+  ]
 }

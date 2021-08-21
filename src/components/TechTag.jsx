@@ -4,7 +4,7 @@ import {
   Javascript,
   Mongodb,
   Nestjs,
-  NodeDotJs,
+  Nodedotjs,
   ReactJs,
   Redux,
   Rust,
@@ -50,7 +50,7 @@ const tagValues = tech => {
       return {
         label: 'Node',
         color: 'green',
-        icon: NodeDotJs
+        icon: Nodedotjs
       }
     case 'heroku':
       return {
