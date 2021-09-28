@@ -50,7 +50,11 @@ const IndexPage = ({ data }) => {
     description: node.frontmatter.description,
     link: node.frontmatter.link,
     maintained: node.frontmatter.maintained
-  }))
+  })).sort((p1, p2) => p1.title.localeCompare(
+    p2.title, 
+    'en', 
+    { sensitivity: 'base' },
+  ))
 
   return (
     <Layout>
@@ -128,10 +132,6 @@ export const query = graphql`
     }
     projects: allMdx(
       filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { 
-        fields: [frontmatter___maintained, frontmatter___title], 
-        order: [DESC, ASC]
-      }
     ) {
       nodes {
         frontmatter {
