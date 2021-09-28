@@ -128,7 +128,10 @@ export const query = graphql`
     }
     projects: allMdx(
       filter: { fileAbsolutePath: { regex: "/content/projects/" } }
-      sort: { fields: [frontmatter___maintained], order: DESC }
+      sort: { 
+        fields: [frontmatter___maintained, frontmatter___title], 
+        order: [DESC, ASC]
+      }
     ) {
       nodes {
         frontmatter {
