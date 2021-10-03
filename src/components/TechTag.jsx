@@ -8,7 +8,8 @@ import {
   ReactJs,
   Redux,
   Rust,
-  Typescript
+  Typescript,
+  Vuedotjs
 } from '@icons-pack/react-simple-icons'
 import React from 'react'
 import { FiCoffee } from 'react-icons/fi'
@@ -16,6 +17,12 @@ import { ImAccessibility } from 'react-icons/im'
 
 const tagValues = tech => {
   switch (tech) {
+    case 'vue':
+      return {
+        label: 'Vue',
+        color: 'green',
+        icon: Vuedotjs
+      }
     case 'react':
       return {
         label: 'React',
