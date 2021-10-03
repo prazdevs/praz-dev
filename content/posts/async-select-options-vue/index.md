@@ -145,3 +145,6 @@ Since we moved the fetching mechanism from the component itself, we only need to
 
 I hope this article helped you understand some of the power of the Vue Composition API and how it can make not only make your Vue applications more efficient, but also your code cleaner.
 
+---
+
+_If you want to know more about the composable used in this post, I highly recommend diving into [VueUse documentation](https://vueuse.org/core/asynccomputed). You may find other composables as well to help you in your projects. And if you can, consider helping the project by either contributing or sponsoring!_
