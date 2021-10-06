@@ -1,10 +1,11 @@
 import { Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import Seo from '../components/Seo'
+import FontContext from '../contexts/FontContext'
 
 const PostsPage = ({ data }) => {
   const posts = data.posts.nodes.map(node => ({
@@ -13,8 +14,9 @@ const PostsPage = ({ data }) => {
     link: node.fields.slug,
     readingTime: node.fields.readingTime.text
   }))
-
   const { header, subheader } = data.page.frontmatter
+
+  const { font } = useContext(FontContext)
 
   return (
     <Layout>
@@ -22,6 +24,7 @@ const PostsPage = ({ data }) => {
       <Flex direction='column'>
         <Heading
           as='h1'
+          fontFamily={font}
           fontWeight='700'
           mr='auto'
           mt={{ base: 4, sm: 7 }}

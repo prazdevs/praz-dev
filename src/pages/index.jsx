@@ -9,17 +9,22 @@ import {
 } from '@chakra-ui/react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import React from 'react'
+import React,  {useContext } from 'react'
 
+import FontContext
+ from '../contexts/FontContext'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import ProjectList from '../components/ProjectList'
 import Seo from '../components/Seo'
 
 const SectionHeading = ({ heading }) => {
+  const { font } = useContext(FontContext)
+
   return (
     <Heading
       as='h2'
+      fontFamily={font}
       fontWeight='600'
       fontSize='3xl'
       mr='auto'
@@ -56,6 +61,8 @@ const IndexPage = ({ data }) => {
     { sensitivity: 'base' },
   ))
 
+  const { font } = useContext(FontContext)
+
   return (
     <Layout>
       <Seo title='Home' />
@@ -82,6 +89,7 @@ const IndexPage = ({ data }) => {
           <Stack direction='column' align='flex-start' justify='center'>
             <Heading
               as='h1'
+              fontFamily={font}
               fontWeight='700'
               borderBottomColor={useColorModeValue('brand.light', 'brand.dark')}
               borderBottomWidth='2px'

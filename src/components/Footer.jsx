@@ -7,7 +7,9 @@ import {
   VStack
 } from '@chakra-ui/react'
 import { Github, Linkedin, Twitter } from '@icons-pack/react-simple-icons'
-import React from 'react'
+import React, { useContext } from 'react'
+
+import FontContext from '../contexts/FontContext'
 
 const ExtLink = props => {
   return (
@@ -37,8 +39,10 @@ const SocialLink = ({ link, icon, label }) => {
 }
 
 const Footer = () => {
+  const { font } = useContext(FontContext)
+
   return (
-    <VStack as='footer' w='full' spacing={6} textAlign='center' mt={20} mb={2}>
+    <VStack as='footer' fontFamily={font} w='full' spacing={6} textAlign='center' mt={20} mb={2}>
       <HStack spacing={7}>
         <SocialLink
           link='https://twitter.com/PrazDevs'

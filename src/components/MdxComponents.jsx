@@ -14,7 +14,9 @@ import {
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import darkTheme from 'prism-react-renderer/themes/nightOwl'
 import lightTheme from 'prism-react-renderer/themes/nightOwlLight'
-import React from 'react'
+import React, { useContext } from 'react'
+
+import FontContext from '../contexts/FontContext'
 
 const Pre = props => {
   const theme = useColorModeValue(lightTheme, darkTheme)
@@ -79,33 +81,89 @@ const Pre = props => {
 const Paragraph = props => <Text {...props} my={3} fontWeight='400' />
 
 const H1 = props => <VisuallyHidden {...props} />
-const H2 = props => (
-  <Heading {...props} as='h2' fontSize='3xl' fontWeight='600' my='0.75em' />
-)
-const H3 = props => (
-  <Heading {...props} as='h3' fontSize='2xl' fontWeight='500' my='0.75em' />
-)
-const H4 = props => (
-  <Heading {...props} as='h4' fontSize='xl' fontWeight='normal' my='0.75em' />
-)
-const H5 = props => (
-  <Heading {...props} as='h5' fontSize='lg' fontWeight='normal' my='0.75em' />
-)
-const H6 = props => (
-  <Heading {...props} as='h6' fontSize='md' fontWeight='normal' my='0.75em' />
-)
 
-const Blockquote = props => (
-  <Flex
-    {...props}
-    direction='column'
-    fontFamily='Marck Script'
-    fontSize='2xl'
-    mx={10}
-    my={2}
-    px={2}
-  />
-)
+const H2 = props => {
+  const { font } = useContext(FontContext)
+  return (
+    <Heading
+      {...props}
+      as='h2'
+      fontFamily={font}
+      fontSize='3xl'
+      fontWeight='600'
+      my='0.75em'
+    />
+  )
+}
+
+const H3 = props => {
+  const { font } = useContext(FontContext)
+  return (
+    <Heading
+      {...props}
+      as='h3'
+      fontFamily={font}
+      fontSize='2xl'
+      fontWeight='500'
+      my='0.75em'
+    />
+  )
+}
+
+const H4 = props => {
+  const { font } = useContext(FontContext)
+  return (
+    <Heading
+      {...props}
+      as='h4'
+      fontFamily={font}
+      fontSize='xl'
+      fontWeight='normal'
+      my='0.75em'
+    />
+  )
+}
+const H5 = props => {
+  const { font } = useContext(FontContext)
+  return (
+    <Heading
+      {...props}
+      as='h5'
+      fontFamily={font}
+      fontSize='lg'
+      fontWeight='normal'
+      my='0.75em'
+    />
+  )
+}
+const H6 = props => {
+  const { font } = useContext(FontContext)
+  return (
+    <Heading
+      {...props}
+      as='h6'
+      fontFamily={font}
+      fontSize='md'
+      fontWeight='normal'
+      my='0.75em'
+    />
+  )
+}
+
+const Blockquote = props => {
+  const { font, isOpenDyslexic } = useContext(FontContext)
+  return (
+    <Flex
+      {...props}
+      direction='column'
+      fontFamily={isOpenDyslexic ? font : 'Marck Script'}
+      fontSize='2xl'
+      mx={10}
+      my={2}
+      px={2}
+    />
+  )
+}
 
 const Cite = props => <Text {...props} as='cite' alignSelf='flex-end' my={2} />
 
