@@ -22,7 +22,6 @@ import { FiMenu as MenuIcon } from 'react-icons/fi'
 
 import { MononokeIcon } from './MononokeIcon'
 import ThemeButton from './ThemeButton'
-import FontButton from './FontButton'
 
 const NavLink = ({ label, link }) => {
   return (
@@ -86,10 +85,7 @@ const Header = () => {
             <Flex as='nav'>
               <NavLinks spacing={4} direction='row' />
             </Flex>
-            <Stack spacing={2} direction='row'>
-              <ThemeButton />
-              <FontButton />
-            </Stack>
+            <ThemeButton />
           </Stack>
           <IconButton
             aria-label='open menu'
@@ -118,10 +114,7 @@ const Header = () => {
             >
               <Stack direction='column' spacing={6}>
                 <NavLinks spacing={6} direction='column' />
-                <Stack direction='row'>
-                  <ThemeButton />
-                  <FontButton />
-                </Stack>
+                <ThemeButton />
               </Stack>
             </DrawerBody>
           </DrawerContent>
