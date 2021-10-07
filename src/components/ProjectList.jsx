@@ -6,19 +6,15 @@ import {
   StackDivider,
   Text
 } from '@chakra-ui/react'
-import React, { useContext } from 'react'
-
-import FontContext from '../contexts/FontContext'
+import React from 'react'
 
 const ProjectList = ({ projects }) => {
-  const { font } = useContext(FontContext)
-
   return (
     <Stack direction='column' divider={<StackDivider />}>
       {projects.map(project => (
         <Stack key={project.title} direction='column'>
           <Stack direction='row' align='center'>
-            <Heading as='h3' fontFamily={font} fontSize='xl' fontWeight='500'>
+            <Heading as='h3' fontSize='xl' fontWeight='500'>
               <Link
                 href={project.link}
                 target='_blank'

@@ -10,22 +10,18 @@ import {
   WrapItem
 } from '@chakra-ui/react'
 import { Link as GatsbyLink } from 'gatsby'
-import React, { useContext } from 'react'
+import React from 'react'
 import { FiCalendar, FiWatch } from 'react-icons/fi'
 
 import TechTag from './TechTag'
-import FontContext from '../contexts/FontContext'
 
 const PostList = ({ posts, isCondensed }) => {
-  const { font } = useContext(FontContext)
-
   return (
     <Stack direction='column' divider={<StackDivider />} spacing={4}>
       {posts.map(post => (
         <Stack key={post.title} direction='column' spacing={3}>
           <Heading
             as={isCondensed ? 'h3' : 'h2'}
-            fontFamily={font}
             fontSize='xl'
             fontWeight={isCondensed ? '500' : '600'}
           >
