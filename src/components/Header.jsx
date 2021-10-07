@@ -16,6 +16,7 @@ import {
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react'
+import { SkipNavLink } from '@reach/skip-nav'
 import { Link as GatsbyLink } from 'gatsby'
 import React from 'react'
 import { FiMenu as MenuIcon } from 'react-icons/fi'
@@ -70,6 +71,18 @@ const Header = () => {
       transition='background-color 0.2s'
     >
       <Box h={{ base: '3.5rem', sm: '4.5rem' }} maxW='62em' mx='auto'>
+        <Link
+          h={{ base: '3.5rem', sm: '4.5rem' }}
+          display='flex'
+          color={useColorModeValue('brand.light', 'brand.dark')}
+          background={useColorModeValue('white', 'gray.800')}
+          textDecor='underline'
+          alignItems='center'
+          border='none'
+          px='4'
+          as={SkipNavLink}
+        />
+
         <Flex w='full' h='full' px='4' align='center' justify='space-between'>
           <Flex fontSize='xl'>
             <MononokeIcon

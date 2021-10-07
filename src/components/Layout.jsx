@@ -1,4 +1,5 @@
 import { Container } from '@chakra-ui/react'
+import { SkipNavContent } from '@reach/skip-nav'
 import React from 'react'
 
 import Footer from './Footer'
@@ -15,7 +16,7 @@ const Layout = ({ children }) => {
         mt={{ base: '3.5rem', sm: '4.5rem' }}
         pt='1rem'
       >
-        {children}
+        <SkipNavContent>{children}</SkipNavContent>
       </Container>
       <Footer />
     </>

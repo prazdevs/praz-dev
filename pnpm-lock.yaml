@@ -12,6 +12,7 @@ specifiers:
   '@icons-pack/react-simple-icons': ^4.6.1
   '@mdx-js/mdx': ^1.6.22
   '@mdx-js/react': ^1.6.22
+  '@reach/skip-nav': ^0.16.0
   framer-motion: ^4.1.17
   gatsby: ^3.14.1
   gatsby-plugin-image: ^1.14.0
@@ -46,6 +47,7 @@ dependencies:
   '@icons-pack/react-simple-icons': 4.6.1_react@17.0.2
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22_react@17.0.2
+  '@reach/skip-nav': 0.16.0_react-dom@17.0.2+react@17.0.2
   framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
   gatsby: 3.14.1_react-dom@17.0.2+react@17.0.2
   gatsby-plugin-image: 1.14.0_ab190b961e071516aefd072771f9af53
@@ -3206,6 +3208,18 @@ packages:
       tslib: 2.3.1
     dev: false
 
+  /@reach/skip-nav/0.16.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-SY4PdNx+hQHbeOr/+qLc+QXdRt9NTVlt0r737bOqY1WURGBIEN9sGgsmIsHluP1/bQuAe0JKdOJ/tXiwQ3Z3ug==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      '@reach/utils': 0.16.0_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tslib: 2.3.1
+    dev: false
+
   /@reach/utils/0.13.2_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-3ir6cN60zvUrwjOJu7C6jec/samqAeyAB12ZADK+qjnmQPdzSYldrFWwDVV5H0WkhbYXR3uh+eImu13hCetNPQ==}
     peerDependencies:
@@ -3217,6 +3231,18 @@ packages:
       react-dom: 17.0.2_react@17.0.2
       tslib: 2.3.1
       warning: 4.0.3
+    dev: false
+
+  /@reach/utils/0.16.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-PCggBet3qaQmwFNcmQ/GqHSefadAFyNCUekq9RrWoaU9hh/S4iaFgf2MBMdM47eQj5i/Bk0Mm07cP/XPFlkN+Q==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tiny-warning: 1.0.3
+      tslib: 2.3.1
     dev: false
 
   /@reach/visually-hidden/0.13.2_react-dom@17.0.2+react@17.0.2:
@@ -12886,6 +12912,10 @@ packages:
 
   /tiny-invariant/1.1.0:
     resolution: {integrity: sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==}
+    dev: false
+
+  /tiny-warning/1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
     dev: false
 
   /tinycolor2/1.4.2:
