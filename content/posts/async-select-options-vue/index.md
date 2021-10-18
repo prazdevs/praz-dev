@@ -145,6 +145,27 @@ Since we moved the fetching mechanism from the component itself, we only need to
 
 I hope this article helped you understand some of the power of the Vue Composition API and how it can make not only make your Vue applications more efficient, but also your code cleaner.
 
+## What if I still use Vue 2?
+
+Everything explained above is compatible with Vue 2 if you use the [Composition API Plugin](https://github.com/vuejs/composition-api). You will just need to replace the `<script setup>` syntax with:
+
+```html
+<script>
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  setup() {
+    // the setup code here
+
+    return {
+      // variables and functions exposed to the template
+    }
+  }
+})
+</script>
+```
+And since any TypeScript code is also valid JavaScript, removing type annotations will make all the code compatible with plain JavaScript. And honestly, I would not be mad at anyone not willing to use TypeScript with Vue 2, but I hope this serves as an example of why the switch to Vue 3 can only be beneficial.
+
 ---
 
 _If you want to know more about the composable used in this post, I highly recommend diving into [VueUse documentation](https://vueuse.org/core/asynccomputed). You may find other composables as well to help you in your projects. And if you can, consider helping the project by either contributing or sponsoring!_

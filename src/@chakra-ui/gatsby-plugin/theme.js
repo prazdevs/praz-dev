@@ -64,6 +64,25 @@ const theme = extendTheme({
         }
       }
     }
+  },
+  styles: {
+    global: {
+      '[data-reach-skip-link]': {
+        position: 'absolute'
+      },
+      '[data-reach-skip-link]:not(:focus)': {
+        border: 0,
+        clip: 'rect(0 0 0 0)',
+        height: '1px',
+        width: '1px',
+        margin: '-1px',
+        padding: 0,
+        overflow: 'hidden'
+      },
+      '[data-reach-skip-link]:hover': {
+        pb: '0 !important'
+      }
+    }
   }
 })
 

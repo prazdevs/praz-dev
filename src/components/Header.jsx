@@ -16,14 +16,13 @@ import {
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react'
+import { SkipNavLink } from '@reach/skip-nav'
 import { Link as GatsbyLink } from 'gatsby'
-import React, { useContext } from 'react'
+import React from 'react'
 import { FiMenu as MenuIcon } from 'react-icons/fi'
 
 import { MononokeIcon } from './MononokeIcon'
 import ThemeButton from './ThemeButton'
-import FontButton from './FontButton'
-import FontContext from '../contexts/FontContext'
 
 const NavLink = ({ label, link }) => {
   return (
@@ -46,6 +45,7 @@ const NavLinks = ({ spacing, direction }) => (
     {[
       { link: '/', label: 'home' },
       { link: '/posts', label: 'posts' }
+      // { link: '/about', label: 'about' }
     ].map(({ label, link }) => (
       <ListItem key={label}>
         <NavLink label={label} link={link} />
@@ -56,7 +56,6 @@ const NavLinks = ({ spacing, direction }) => (
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { font } = useContext(FontContext)
 
   return (
     <Box
@@ -67,12 +66,23 @@ const Header = () => {
       right='0'
       w='full'
       zIndex={1}
-      fontFamily={font}
       borderBottomWidth='1px'
       backgroundColor={useColorModeValue('white', 'gray.800')}
       transition='background-color 0.2s'
     >
       <Box h={{ base: '3.5rem', sm: '4.5rem' }} maxW='62em' mx='auto'>
+        <Link
+          h={{ base: '3.5rem', sm: '4.5rem' }}
+          display='flex'
+          color={useColorModeValue('brand.light', 'brand.dark')}
+          background={useColorModeValue('white', 'gray.800')}
+          textDecor='underline'
+          alignItems='center'
+          border='none'
+          px='4'
+          as={SkipNavLink}
+        />
+
         <Flex w='full' h='full' px='4' align='center' justify='space-between'>
           <Flex fontSize='xl'>
             <MononokeIcon
@@ -88,10 +98,7 @@ const Header = () => {
             <Flex as='nav'>
               <NavLinks spacing={4} direction='row' />
             </Flex>
-            <Stack spacing={2} direction='row'>
-              <ThemeButton />
-              <FontButton />
-            </Stack>
+            <ThemeButton />
           </Stack>
           <IconButton
             aria-label='open menu'
@@ -118,12 +125,9 @@ const Header = () => {
               align='center'
               justify='center'
             >
-              <Stack fontFamily={font} direction='column' spacing={6}>
+              <Stack direction='column' spacing={6}>
                 <NavLinks spacing={6} direction='column' />
-                <Stack direction='row'>
-                  <ThemeButton />
-                  <FontButton />
-                </Stack>
+                <ThemeButton />
               </Stack>
             </DrawerBody>
           </DrawerContent>
