@@ -102,7 +102,7 @@ import useAsyncOptions from '~/composables/useAsyncOptions'
 
 const props = defineProps<{ optionType: string, modelValue: string }>()
 const emit = defineEmits<{
-  (e: 'update:model-value', value: string); void
+  (e: 'update:model-value', value: string): void
 }>()
 
 const { 
