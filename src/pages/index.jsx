@@ -58,7 +58,11 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title='Home' />
+      <Seo 
+        title='Home'
+        description={page.subheader}
+        url='https://praz.dev'
+      />
       <Stack spacing={12}>
         <Flex
           direction={{ base: 'column', sm: 'row' }}

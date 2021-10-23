@@ -21,12 +21,19 @@ const PostTemplate = ({ data }) => {
     title: data.mdx.frontmatter.title,
     date: data.mdx.frontmatter.date,
     readingTime: data.mdx.fields.readingTime.text,
-    body: data.mdx.body
+    slug: data.mdx.fields.slug,
+    body: data.mdx.body,
+    excerpt: data.mdx.excerpt,
   }
 
   return (
     <Layout>
-      <Seo title={post.title} />
+      <Seo 
+        title={post.title}
+        description={post.excerpt}
+        type='article'
+        url={`https://praz.dev${post.slug}`}
+      />
       <Heading
         as='h1'
         fontSize='4xl'
@@ -68,10 +75,12 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       mdxAST
       body
+      excerpt
       fields {
         readingTime {
           text
         }
+        slug
       }
       frontmatter {
         title

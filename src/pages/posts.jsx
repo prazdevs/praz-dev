@@ -18,7 +18,11 @@ const PostsPage = ({ data }) => {
 
   return (
     <Layout>
-      <Seo title='Posts' />
+      <Seo 
+        title='Posts'
+        description={subheader}
+        url='https://praz.dev/posts'
+      />
       <Flex direction='column'>
         <Heading
           as='h1'
