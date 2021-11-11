@@ -1,20 +1,28 @@
 import {
-  Badge,
   Heading,
   Link,
   Stack,
   StackDivider,
-  Text
+  Text,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react'
 import React from 'react'
 
-const ProjectList = ({ projects }) => {
+import TechTag from './TechTag'
+
+const ProjectList = ({ projects, isCondensed }) => {
+  console.log(projects)
   return (
-    <Stack direction='column' divider={<StackDivider />}>
+    <Stack direction='column' divider={<StackDivider />} spacing={4}>
       {projects.map(project => (
-        <Stack key={project.title} direction='column'>
+        <Stack key={project.title} direction='column' spacing={3}>
           <Stack direction='row' align='center'>
-            <Heading as='h3' fontSize='xl' fontWeight='500'>
+          <Heading 
+              as={isCondensed ? 'h3' : 'h2'} 
+              fontSize='xl' 
+              fontWeight={isCondensed ? '500' : '600'}
+            >
               <Link
                 href={project.link}
                 target='_blank'
@@ -23,10 +31,16 @@ const ProjectList = ({ projects }) => {
                 {project.title}
               </Link>
             </Heading>
-            {project.maintained ? (
-              <Badge colorScheme='green'>maintained</Badge>
-            ) : null}
           </Stack>
+          {isCondensed ? null : (
+            <Wrap>
+              {project.tags.map(tag => (
+                <WrapItem key={tag}>
+                  <TechTag tech={tag} />
+                </WrapItem>
+              ))}
+            </Wrap>
+          )}
           <Text>{project.description}</Text>
         </Stack>
       ))}

@@ -46,10 +46,7 @@ const IndexPage = ({ data }) => {
     excerpt: node.excerpt
   }))
   const projects = data.projects.nodes.map(node => ({
-    title: node.frontmatter.title,
-    description: node.frontmatter.description,
-    link: node.frontmatter.link,
-    maintained: node.frontmatter.maintained
+    ...node.frontmatter
   })).sort((p1, p2) => p1.title.localeCompare(
     p2.title, 
     'en', 
@@ -106,7 +103,12 @@ const IndexPage = ({ data }) => {
         </Flex>
         <Flex as='section' direction='column'>
           <SectionHeading heading='Projects' />
-          <ProjectList projects={projects} />
+          <ProjectList projects={projects} isCondensed />
+          <Text alignSelf={{ base: 'center', sm: 'flex-end' }} mt={6} mb={2}>
+            <Link as={GatsbyLink} to='projects' fontSize='xl' fontWeight='400'>
+              see all projects
+            </Link>
+          </Text>
         </Flex>
       </Stack>
     </Layout>
@@ -135,14 +137,16 @@ export const query = graphql`
       }
     }
     projects: allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+      filter: { 
+        fileAbsolutePath: { regex: "/content/projects/" } 
+        frontmatter: {pinned: {eq: true}}
+      }
     ) {
       nodes {
         frontmatter {
           title
           link
           description
-          maintained
         }
       }
     }

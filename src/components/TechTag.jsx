@@ -9,7 +9,10 @@ import {
   Redux,
   Rust,
   Typescript,
-  Vuedotjs
+  Vuedotjs,
+  Cypress,
+  Gatsby,
+  Vite
 } from '@icons-pack/react-simple-icons'
 import React from 'react'
 import { FiCoffee } from 'react-icons/fi'
@@ -88,6 +91,24 @@ const tagValues = tech => {
         label: 'Accessibility',
         color: 'orange',
         icon: ImAccessibility
+      }
+    case 'cypress':
+      return {
+        label: 'Cypress',
+        color: 'gray',
+        icon: Cypress
+      }
+    case 'gatsby':
+      return {
+        label: 'Gatsby',
+        color: 'purple',
+        icon: Gatsby
+      }
+    case 'vite':
+      return {
+        label: 'Vite',
+        color: 'yellow',
+        icon: Vite
       }
     default:
       return { label: tech, color: undefined, icon: null }
