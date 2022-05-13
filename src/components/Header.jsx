@@ -12,7 +12,6 @@ import {
   List,
   ListItem,
   Stack,
-  Text,
   useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react'
@@ -43,7 +42,7 @@ const NavLink = ({ label, link }) => {
 const NavLinks = ({ spacing, direction }) => (
   <Stack as={List} direction={direction} align='center' spacing={spacing}>
     {[
-      { link: '/', label: 'home' },
+      // { link: '/', label: 'home' },
       { link: '/posts', label: 'posts' },
       { link: '/projects', label: 'projects' }
       // { link: '/about', label: 'about' },
@@ -93,7 +92,14 @@ const Header = () => {
               aria-hidden='true'
               focusable='false'
             />
-            <Text>praz.dev</Text>
+            <Link
+              as={GatsbyLink}
+              to="/"
+              fontSize="xl"
+              variant='noUnderline'
+            >
+              praz.dev
+            </Link>
           </Flex>
           <Stack spacing={6} direction='row' d={{ base: 'none', sm: 'flex' }}>
             <Flex as='nav'>
